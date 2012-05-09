@@ -3,6 +3,7 @@
     VIEWS NAME:        user.views
     CREATED BY:        xuwh
     CREATED DATE:    2011-12-16
+    UPDATE DATE: 2012-05-10
 '''
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
@@ -121,6 +122,7 @@ def task_post_widget(request):
             'task/task-post-widget-%s.html' % (widget_name,),
             eval('__get_%s_dict(**%s)' % (widget_name,__args))
         )
+
 
 def __get_step1_dict(**args):
     from task.models import Task_Type
