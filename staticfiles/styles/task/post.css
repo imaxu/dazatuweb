@@ -1,0 +1,47 @@
+#post-nav{
+
+}
+#post-nav .task-describe{
+	margin-top:10px;
+}
+#post-nav .item .row .col{
+	margin-right:10px;
+}
+.item-desc{
+	height:40px;
+	line-height:40px;
+}
+.border-bottom-line{
+	height:10px;
+	margin-bottom:10px;
+}
+.remove-link{
+	background: url(../../images/em/bg-close.gif) no-repeat 0 0; 
+	height: 15px; 
+	width:30px;
+	padding-left:20px;
+	cursor:pointer;
+}
+.remove-link:hover{
+	background-color:#e1e1e1;
+}
+.right-box .prim-right .item {
+	margin-bottom:10px;
+}
+.right-box .prim-right .item .row  .base-info{
+	width:100%;
+	margin-bottom:10px;
+	text-align:center;
+	background-color:#ebd878;
+}
+.right-box .prim-right .item .row .describe{
+	width:100%;
+	margin-top:20px;
+}
+.opt-deadline .row{
+	margin-top:10px;
+}
+.button-gray2{
+	font-size:120%;
+}
+

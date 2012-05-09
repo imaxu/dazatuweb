@@ -1,0 +1,68 @@
+﻿{% load static %}
+<link href="{% get_static_prefix %}styles/user/reg_success.css" rel="stylesheet" rev="stylesheet" type="text/css" />
+<script>
+$(document).ready(function(){
+	$("#to_t_qq_com").click(function(){
+		//TODO:redirect to t.qq.com(api)
+	});
+	$("#to_weibo_com").click(function(){
+		//TODO:redirect to weibo.com(api)
+	});
+	$("#to_163_com").click(function(){
+		//TODO:redirect to 163.com(api)
+	});	
+});
+</script>
+<div id="reg_success" data="{{ U_ID }}" >
+	<div class="g bold color-green">{{ U_FIRST_NAME }}{{ U_APPELLATION }},欢迎您！</div>
+	<div class="ss color-brown dialogtip">
+		<p>您已经成功注册为打杂兔网站会员，现在就可以开始<a href="#">发布</a>您的第一个任务了！</p>
+		<p>同时还可以：</p>
+	</div>
+	<div class="options">
+		<div class="opt qtipitem" title="尽可能完善个人资料，这样其他人就可以更信任您，无论您在发布任务或是替人打杂时，都将获得最大的收益！">
+			<div class="subject s bold color-blue-lighter">完善个人资料</div>
+			<div id="symbol_info">
+			</div>
+		</div>
+		<div class="opt qtipitem" title="去看看别人的任务，也许您现在的需求别人也发布过，改一改就可以发布成您的任务了！">
+			<div class="subject s bold color-blue-lighter">看看别人的任务</div>
+			<div id="symbol_tasks"></div>		
+		</div>
+		<div class="opt qtipitem" title="学习示例教程，除了深入了解我们的服务内容，还能有机会获取赏金券哦！赏金券可以节省您发布任务的酬金。">
+			<div class="subject s bold color-blue-lighter">进入示例教程</div>
+			<div id="symbol_training"></div>		
+		</div>
+		<div class="opt qtipitem" title="送人玫瑰，手有余香。替别人打杂不仅可以获得别人的称赞和尊重，还可以获得酬金。想挣外快？来申请吧！">
+			<div class="subject s bold color-blue-lighter">申请成为打杂兔</div>
+			<div id="symbol_dazatu"></div>		
+		</div>
+	</div>
+	<div class="clear color-blue-darkest indent bold sharesubject">
+	通过微博分享您的消息，有机会获得赏金券。<label><img src="{% get_static_prefix %}images/em/mark1.gif" class="qtipitem mark1" title="赏金券是一种虚拟优惠券，可用于任务赏金支付。" /></label>
+	</div>
+	<div class="sharecontext clear">
+		<div class="blank"></div>
+		<div class="left">
+			<img src="{% get_static_prefix %}images/em/horn.png" title="微博分享" />
+		</div>
+		<div class="right">
+			<textarea id="share_text" class="input-txtarea ss" >我已经成为打杂兔的正式成员啦！从今天起我可以像玩游戏一样，把手上的杂事发布成任务让别人来帮我解决。
+			</textarea>
+		</div>
+	</div>
+	<div class="sharebuttons clear">
+		<div class="btn">
+			<div id="to_t_qq_com" class="button qtipitem" title="分享至腾讯微博"></div>
+		</div>
+		<div class="btn">
+			<div id="to_weibo_com" class="button qtipitem" title="分享至新浪微博"></div>
+		</div>
+		<div class="btn">
+			<div id="to_163_com" class="button qtipitem" title="分享至网易微博"></div>
+		</div>
+	</div>
+	<div class="gotoanyway clear">
+		<a href="/user/center/" >关闭此页，随处看看</a>
+	</div>
+</div>

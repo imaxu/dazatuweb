@@ -1,0 +1,24 @@
+{% load static %}
+
+<link href="{% get_static_prefix %}styles/flatpages/404.css" rel="stylesheet" rev="stylesheet" type="text/css" />
+
+
+<div id="page404">
+	<div class="err_title m color-green-darkest clear">我们很抱歉的通知您：</div>
+	<div class="g err_action color-orange-darkest clear" style="height:50px;line-height:35px;">{{ ERR_ACTION }}被拒绝，原因可能是：</div>
+	<div class="s color-orange err_reasons clear">
+	{% for err in ERR_REASONS %}
+		<div>> {{ err }}</div>
+	{% endfor %}
+	</div>
+	<div class="err_return s color-green-darkest clear">
+	<div>您可以</div>
+	{% for text,url in OTHER_OPTIONS %}
+		<li><a href="{{ url }}"title="{{ text }}" >{{ text }}</a></li>
+	{% endfor %}
+	</div>	
+	<div class="blank"></div>
+	<div class="blank"></div>
+	<div class="blank"></div>
+	<div class="blank"></div>
+</div>

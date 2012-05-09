@@ -1,0 +1,232 @@
+{% load static %}
+
+<div id="task-post-widget-step1">
+	<div class="banner">
+		<label class="g color-blue-lighter">任务发布向导</label>
+		<label class="color-brown">（第一步：选择任务类型等）</label>
+	</div>	
+	<div class="task-type-slider">
+		<div id="go-to-left" class="slider-btn">
+			<div class="icon-left"></div>
+		</div>
+		<div class="slider-prim img-radius">
+			<div id="task-type-list">
+				{% for task_type in TASK_TYPES %}
+				<div class="item" id="task-type-{{ task_type.id }}">
+					<img class="qtipitem" 
+						data1="{{ task_type.logo }}"
+						data2="{{ task_type.logo_gray }}" 
+						data3="{{ task_type.id }}"
+						src="{% get_static_prefix %}images/task_type_symbols/{{ task_type.logo }}" 
+						title="{{ task_type.name }}" />
+					<div class="ss color-blue-lighter">{{ task_type.name }}</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		<div id="go-to-right" class="slider-btn">
+			<div class="icon-right"></div>
+		</div>
+	</div>
+	<div style="height:20px;border-bottom:1px solid #e1e1e1;" class="clear"></div>
+	<div style="height:60px;line-height:60px;border-bottom:1px solid #e1e1e1;" class="clear">
+		<div class="ss opt-task-unrepeat" style="margin-left:50px;">
+			{% ifequal TASK_REPEAT_FREQUENCY '0' %}
+			我要发布的任务<a  id="opt-change-repeat" href="#" >不是周期性重复的。</a>
+			<label class="less_normal color-gray">是否需要每周完成一次？或者每两周完成一次？</label>
+			{% else %}
+			我要发布的任务需要
+			<a  id="opt-change-repeat" href="#" >
+				每{{ TASK_REPEAT_FREQUENCY }}周
+			</a>完成一次。
+			{% endifequal %}	
+		</div>
+		<div class="ss opt-task-repeat" style="margin-left:50px;display:none;">
+			<label>
+				<input id="opt-task-is-repeat" type="checkbox" />
+				我发布的任务
+			</label>
+			<select id="opt-task-repeat-freq">
+				<option value="0">不需要重复完成</option>
+				<option value="1">需要每周完成一次</option>
+				<option value="2">需要每2周完成一次</option>
+				<option value="3">需要每3周完成一次</option>
+				<option value="4">需要每4周完成一次</option>
+			</select>
+
+
+		</div>	
+	</div>
+	<div style="min-height:60px;border-bottom:1px solid #e1e1e1;" class="clear">
+		<div class="ss opt-assign-model-auto" style="margin-left:50px;line-height:60px;">
+		{% ifequal TASK_ASSIGN_MODEL ''  %}
+			我需要网站<a class="opt-change-assign-model" href="#">自动</a>将任务分配给打杂兔。
+		{% else %}
+			{% ifequal TASK_ASSIGN_MODEL 'auto' %}
+			我需要网站<a class="opt-change-assign-model" href="#">自动</a>将任务分配给打杂兔。
+			{% endifequal %}
+			{% ifequal TASK_ASSIGN_MODEL 'free' %}
+			<a class="opt-change-assign-model" href="#">我来选择和邀请</a>打杂兔来帮我完成任务。
+			{% endifequal %}	
+			{% ifequal TASK_ASSIGN_MODEL 'topfirst' %}
+			<a class="opt-change-assign-model" href="#">等级排网站前5名的打杂兔</a>优先获得任务。
+			{% endifequal %}	
+		{% endifequal %}
+		</div>
+		<div class="ss opt-assign-model-manual" style="margin-left:50px;line-height:30px;display:none;">
+			<div class="opt-assign-model">
+				<label style="cursor:pointer;">
+				<input type="radio" name="opt-assign-model" checked="checked"  value="auto">
+				自动选择出价最低的兔子为我打杂。
+				<img 
+						class="qtipitem" 
+						src="{% get_static_prefix %}images/em/mark1.gif" 
+						title="自动分配模式：这是最便捷的找到打杂兔的方式，
+						您只需要发布完任务，然后去喝茶散步，当您所设置的任务分配到达截止时间时，
+						我们会选择出价最低的兔子为您打杂。"
+					/>
+				</label>
+			</div>
+			<div class="opt-assign-model">
+				<label style="cursor:pointer;">	
+				<input type="radio" name="opt-assign-model" value="free">
+				我来决定邀请和选择哪一位打杂兔来帮我解决问题。
+				<img 
+						class="qtipitem" 
+						src="{% get_static_prefix %}images/em/mark1.gif" 
+						title="我来选择模式：您可以浏览每一个打杂兔的信息，
+						然后决定是否邀请对方帮助你解决问题。
+						如果在到达分配截止时间时您的任务还未分配，
+						我们将使用自动分配的方式为您选择出价最低的打杂兔来帮助您。"
+					/>
+				</label>
+			</div>
+			<div class="opt-assign-model">
+				<label style="cursor:pointer;">
+				<input type="radio" name="opt-assign-model" value="topfirst" disabled="true">
+				向等级排前5名的打杂兔授予任务优先获取权。
+				<img 
+						class="qtipitem" 
+						src="{% get_static_prefix %}images/em/mark1.gif" 
+						title="我来授予优先权：
+						您选择的打杂兔将在一定时间内拥有优先获得任务的权利。
+						如果您选择的兔子拒绝了您的邀请，那么其他的打杂兔们将可以向您发出竞价申请。"
+					/>		
+				</label>	
+			</div>
+		</div>	
+	</div>	
+	<div  class="clear" style="width:90%;">
+			<div id="goto-next-button" class="button-red" style="margin-left:50px;margin-top:10px;float:right;">继续</div>
+	</div>			
+	<div class="blank clear"></div>
+	<form action="/task/post/" method="post" style="display:none;">
+		<input type="text" id="task-type" name="task-type" value="3" />
+		<input type="text" id="task-repeat-frequency" name="task-repeat-frequency" value="0"/>
+		<input type="text" id="task-assign-model" name="task-assign-model" value="auto"/>
+		<input type="submit" id="submit-btn"/>
+	</form>
+</div>
+<script type="text/javascript">
+	$("#opt-change-repeat").click(function(){
+		$(".opt-task-unrepeat").hide();
+		$(".opt-task-repeat").show();
+	});
+
+	$(".opt-change-assign-model").click(function(){
+		$(".opt-assign-model-auto").hide();
+		$(".opt-assign-model-manual").show();
+	});
+	//继续按钮
+	$("#goto-next-button").click(function(){
+		//获取任务类型
+		_task_type = $("#task-type-list > .selected").find("img").attr("data3");
+		if(_task_type == undefined){
+			_task_type = 3;//默认为其他类型的任务
+		}
+		//获取任务重复频率
+		if($("#opt-task-is-repeat").attr("checked") == "checked"){
+			//repeat
+			_task_repeat_freq = $("#opt-task-repeat-freq").val();
+		}
+		else{
+			_task_repeat_freq = 0;
+		}
+		//获取任务分配模式
+		_task_assign_model = $("input[name='opt-assign-model']:checked").val();
+		//
+		
+		$("#task-type").val(_task_type);
+		$("#task-repeat-frequency").val(_task_repeat_freq);
+		$("#task-assign-model").val(_task_assign_model);
+		$("#submit-btn").click();
+	});
+	if($(".qtipitem[title]").qtip != undefined){
+		$(".qtipitem[title]").qtip({
+			position:{
+				my:'bottom center',
+				at:'top center'
+			},
+			style:{
+				classes:'ui-tooltip-green ui-tooltip-shadow'
+			}
+		});	
+	};	
+	var task_type_slider = $('#task-type-list').bxSlider({
+		auto:false,
+		controls: false,
+		mode:'horizontal',
+		displaySlideQty: 5,
+		moveSlideQty: 2	,
+		pause: 1000
+	});
+	
+	$("#go-to-left").click(function(){
+		task_type_slider.goToPreviousSlide();
+	});
+	$("#go-to-right").click(function(){
+		task_type_slider.goToNextSlide();
+	});	
+	
+	$("#task-type-list > .item").click(function(){
+		$("#task-type-list > .item").removeClass("selected");
+		items = $("#task-type-list > .item > img");
+		$(this).toggleClass("selected");
+		for(i=0;i<items.length;i++){
+			dt = $(items[i]).attr("data2");
+			$(items[i]).attr("src","{% get_static_prefix %}images/task_type_symbols/" + dt);
+			
+		};
+		curr_img = $(this).find("img")
+		curr_img.attr("src","{% get_static_prefix %}images/task_type_symbols/" + curr_img.attr("data1"));
+	});
+	
+	function get_json_from_parent_page(){
+		items = $("input");
+	}
+	
+	function __init__(){
+		__task_type = "{{ TASK_TYPE }}";
+		__task_repeat_freq = "{{ TASK_REPEAT_FREQUENCY }}";
+		__task_assign_model = "{{ TASK_ASSIGN_MODEL }}";
+		if(__task_type.length > 0 && __task_type != 3){
+			$("#task-type-" + __task_type).click();
+		}
+		if(__task_repeat_freq.length > 0){
+			$("#opt-task-repeat-freq")
+				.find("option")[__task_repeat_freq]
+					.selected="selected";
+			$("#opt-task-is-repeat").attr("checked","checked");
+		}
+		if(__task_assign_model.length > 0 ){
+			$("input[name='opt-assign-model']").each(function(e){
+				item = $("input[name='opt-assign-model']")[e];
+				if(item.value == __task_assign_model){
+					item.checked="checked";
+				}
+			});
+		}
+	}
+	
+	__init__();
+</script>

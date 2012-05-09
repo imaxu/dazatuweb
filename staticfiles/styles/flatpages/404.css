@@ -1,0 +1,27 @@
+﻿#page404{
+	width:90%;
+	margin:0 auto;
+	text-align:left;
+}
+.err_action{
+	width:100%;
+}
+.err_reasons{
+	min-height:180px;
+	height:180px;
+	margin-top:20px;
+}
+.err_reasons div{
+	height:30px;
+	width:100%;
+	line-height:30px;
+	text-indent:0em;
+}
+
+.err_return{
+	margin-top:50px;
+	width:100%;
+}
+.err_return li{
+	text-indent:2em;
+}

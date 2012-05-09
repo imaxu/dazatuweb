@@ -1,0 +1,201 @@
+﻿{% load static %}
+{% load users_extra %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<title>{{ PAGE_TITLE }} - 打杂兔，大家帮助大家的网站</title>
+	<link href="{% get_static_prefix %}styles/common.css" rel="stylesheet" rev="stylesheet" type="text/css" />
+	<link href="{% get_static_prefix %}styles/head.css" rel="stylesheet" rev="stylesheet" type="text/css" />		
+	<link href="{% get_static_prefix %}styles/index.css" rel="stylesheet" rev="stylesheet" type="text/css" />	
+	<link href="{% get_static_prefix %}styles/foot.css" rel="stylesheet" rev="stylesheet" type="text/css" />
+	<script src="http://api.map.baidu.com/api?v=1.1" asyn="true" type="text/javascript"></script>
+	<script src="{% get_static_prefix %}scripts/libs/Baidu.Map.API.js" type="text/javascript"></script>
+	<script src="{% get_static_prefix %}scripts/libs/jquery-1.7.1.min.js" type="text/javascript"></script>
+	<script src="{% get_static_prefix %}scripts/libs/jquery.tools.min.js" type="text/javascript"></script>
+	<script src="{% get_static_prefix %}scripts/libs/jquery.bxSlider.min.js" type="text/javascript"></script>
+	<script src="{% get_static_prefix %}scripts/libs/jquery.validate.min.js" type="text/javascript"></script>
+	<script src="{% get_static_prefix %}scripts/libs/jquery.metadata.js" type="text/javascript"></script>		
+	<script src="{% get_static_prefix %}scripts/libs/ff_innerText.js" type="text/javascript"></script>
+	<script src="{% get_static_prefix %}scripts/head.js" type="text/javascript"></script>
+	<script src="{% get_static_prefix %}scripts/index.js" type="text/javascript"></script>
+	</head>
+
+	<body id="index">
+		<div id="box-top" class="bg-ffef87-to-fdde05">
+			<div id="top-bar-cont">
+				<div id="site-logo">
+					<img src="#" width="136" height="60" title="打杂兔，大家帮助大家的网站" />
+				</div>
+				<div id="region-select">
+					<a id="city-selector" href="#" rel="#tipbox">选择城市▼</a>
+				</div>
+				<div id="top-bar-middle"></div>
+				<div id="top-bar-menu">
+					<a href="/user/login/" id="menu-0">登录</a>
+					<a href="/user/reg/" id="menu-2">注册会员</a>
+					<a href="#" id="menu-3">申请打杂</a>
+					<a href="#" id="menu-4">了解网站</a>
+				</div>
+			</div>
+		</div>
+		<!--[if lte IE 6]>
+		<div >你正在使用的浏览器版本太低，将不能正常浏览及使用本站的所有功能。请升级 <a href="http://windows.microsoft.com/zh-CN/internet-explorer/downloads/ie">Internet Explorer</a> 或使用 <a href="http://www.google.com/chrome/">Google Chrome</a> 浏览器。</div>
+		<![endif]-->		
+		<div id="box-0">
+			<div id="content-recommend">
+				<div id="cont-reco-dazatu">
+					<div id="reco-dazatu-list">
+					{% for dazatu in dazatu_list %}
+						<div id="dazatu-{{ forloop.counter }}">
+							<div id="dazatu-pic">
+								<img src="{% get_media_prefix %}{{ dazatu.image }}" width="635" height="410" title="打杂兔" />
+							</div>					
+							<div id="dazatu-sum" class="clear">						
+								<div id="dazatu-sum-name" >{{ dazatu.name }}</div>
+								<div id="dazatu-sum-leve">
+									<div class="leve-sta">&nbsp;</div>
+									<div class="leve-num">{{ dazatu.level }}级打杂兔</div>
+								</div>
+								<div id="dazatu-sum-expert-at" class="clear">
+									精通于
+									{% for item in dazatu.goodat %}
+										{% if forloop.last %}
+											{{item}}
+										{% else %}
+											{{item}}、
+										{% endif %}
+									{% endfor %}
+								</div>	
+
+							</div>
+						</div>
+					{% endfor %}
+					</div>
+				</div>
+				<div id="cont-reco-task">
+					<div id="cont-reco-task-list" class="s color-brown bold">
+						<p>最近完成的任务</p>
+					<div class="arrow1-up">
+						<img id="go-prev" src="{% get_static_prefix %}images/arrow-up_yellow.png" title="向上滚动"/>
+					</div>
+					<div id="recent-tasks" style="height:300px;">
+					{% for task in tasks_list %}
+						<div id="task-{{ forloop.counter }}">
+							<div class="task-item">
+								<div class="task-userhead-img">
+									<img 
+										src="{% get_media_prefix %}{{ task.user|get_user_headimage_from_user }}" 
+										title="{{ task.user.first_name }}{{ task.user.appellation }}" />
+								</div>
+								<div class="task-describe">
+									<div class="task-title">
+										<a href="/task/details/{{ task.id }}" >{{ task.title }}</a></div>
+									<div class="task-price">￥{{ task.price }}</div>
+								</div>					
+							</div>	
+							<div class="sep-line"></div>							
+						</div>	
+					{% endfor %}
+					</div>
+					<div class="arrow1-down clear">
+						<img id="go-next" src="{% get_static_prefix %}images/arrow-down_yellow.png" title="向下滚动"/>
+					</div>					
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="box-login" class="clear" >
+				<div id="login-slogan" class="color-brown" >
+				什么？你太忙了？从现在开始，你忙你的，让打杂兔来帮你打理杂务！
+				</div>
+				<div id="login-form">
+					<form id="loginform" name="loginform" action="user/reg/" method="post">{% csrf_token %}
+						<input id="in-usermail" name="em" type="text" class="login-bar" value="输入您的电子邮箱地址" rules="{required:true,email:true,messages:{required:'请您输入正确的电子邮箱格式。',email:'请您输入正确的电子邮箱格式。'}}" />
+						<input id="sub" type="button" class="login-btn" value="开  始" />
+						<input id="v-sub" type="submit" style="display:none;" />
+					</form>
+				</div>							
+		</div>		
+		<div id="box-1" class="clear">
+			<div id="item0" class="cont-1-item">
+				<div class="s color-blue bold title">了解打杂兔网站</div>
+				<div class="intr-cont color-brown">打杂兔网站可以让你通过服务找到那些拥有你之所需特长的朋友，并由他们帮助你解决任何问题。<a href="#">了解更多>></a></div>
+			</div>
+			<div id="item1" class="cont-1-item">
+				<div class="s color-blue bold title">申请成为打杂兔</div>
+				<div class="intr-cont color-brown">申请者需要接受我们的实名信息认证、视频面试、好友调查等审核步骤，以保证申请者及雇主的合法权益。<a href="#">现在申请>></a></div>			
+			</div>
+			<div id="item2" class="cont-1-item">
+				<div class="s color-blue bold title">视频中的打杂兔</div>
+				<div class="intr-cont color-brown"></div>			
+			</div>
+		</div>
+		<div id="box-2" class="clear">
+			<div class="box-left">
+				<div class="title color-blue s bold">机会在这里</div>
+				<div class="clear contents">
+					<div class="item">
+						<img src="{% get_static_prefix %}images/ad/ad1.png" width="276" height="161" title="接机服务"/>
+					</div>
+					<div class="item">
+						<img src="{% get_static_prefix %}images/ad/ad1.png" width="276" height="161" title="接机服务"/>
+					</div>
+				</div>
+			</div>
+			<div class="box-right">
+				<div id="map"></div>
+			</div>
+		</div>
+		{% include "footer.html" %}
+		<div id="tipbox" class="dialogbox">
+			<div class="first-label"></div>
+			<div class="second-label"></div>
+			<img class="clsbtn" src="{% get_static_prefix %}images/popWinClos.png" title="关闭"/>
+			<div class="content clear">
+				<div class="s color-blue bold">请选择您所在的城市或地区：</div>
+				<div id="region-list" class="region-list">
+					<li><a href="#" class="region">海淀区</a></li>
+					<li><a href="#" class="region">石景山区</a></li>
+					<li><a href="#" class="region">东城区</a></li>
+					<li><a href="#" class="region">西城区</a></li>
+					<li><a href="#" class="region">朝阳区</a></li>
+				</div>				
+			</div>
+		</div>
+		<div id="msgbox"  class="dialogbox">
+			<div class="first-label"></div>
+			<div class="second-label"></div>
+			<img class="clsbtn" src="{% get_static_prefix %}images/popWinClos.png" title="关闭"/>
+			<div class="content clear">			
+			</div>		
+		</div>
+	</body>
+</html>
+
+<script type="text/javascript">
+var map = new BMap.Map("map");
+var point = new BMap.Point(116.351134, 39.982998);
+map.centerAndZoom(point,16);
+var defaultIcon = new BMap.Icon( "{% get_static_prefix %}images/mark-icon.png",new BMap.Size(37, 42),
+{
+//opts if have.
+});
+var onHoverIcon = new BMap.Icon( "{% get_static_prefix %}images/mark-icon_onHover.png",new BMap.Size(40, 45),
+{
+//opts if have.
+}); 
+var onClickIcon = new BMap.Icon( "{% get_static_prefix %}images/mark-icon_onClick.png",new BMap.Size(40, 45),
+{
+//opts if have.
+});
+// 随机向地图添加10个标注
+var bounds = map.getBounds();
+var lngSpan = bounds.maxX - bounds.minX;
+var latSpan = bounds.maxY - bounds.minY;
+for (var i = 0; i < 10; i ++) {
+  var point = new BMap.Point(bounds.minX + lngSpan * Math.random() * 0.7, bounds.minY + latSpan * Math.random() * 0.7);
+  addMarker(point, i,defaultIcon,onClickIcon,onHoverIcon);
+}
+</script>

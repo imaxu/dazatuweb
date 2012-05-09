@@ -1,0 +1,26 @@
+#post-review{
+
+}
+#post-review .item .row{
+	width:100%;
+	
+}
+#post-review .item  .row .col{
+	width:auto;
+	margin-right:20px;
+}
+.icon-lock-closed-sm{
+	margin-top:5px;
+}
+
+.row{
+	line-height:30px;
+}
+
+.primary-box .right-box .right{
+	width:90px;
+}
+
+.primary-box .right-box  .left{
+	width:110px;
+}

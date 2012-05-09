@@ -1,0 +1,309 @@
+{% extends "base-lr.html" %}
+{% load static %}
+{% load task_extra %}
+{{ REQUEST }}
+{% block page_title %}
+发布新任务
+{% endblock %}
+{% block page_head_addtional %}
+<link href="{% get_static_prefix %}styles/task/post.css" rel="stylesheet" rev="stylesheet" type="text/css" />
+<script src="{% get_static_prefix %}scripts/task/post.js" type="text/javascript"></script>
+<link href="{% get_static_prefix %}styles/task/task-post-widget-step1.css" 
+	rel="stylesheet" 
+	rev="stylesheet" 
+	type="text/css" 
+/>
+{% endblock %}
+{% block layout_left %}
+<form id="task-post-form" action="/task/post/review/" method="post">
+	<input type="text" value="{{ IS_POSTBACK }}" id="is_postback" style="display:none;"/>
+	<input type="hidden" name="assigned_deadline" value="" />
+	<input type="hidden" name="finished_deadline" value="" />
+	<input type="hidden" name="id_by_vehicle" value="" />
+	<input type="hidden" name="id_by_virtual" value="" />
+	<input type="hidden" value="{{ REQUEST.task_repeat_freq }}" name="task-repeat-frequency"/>
+	<input type="hidden" value="{{ REQUEST.task_assign_model }}" name="task-assign-model"/>
+	<input type="submit" id="go-to-next" style="display:none;" />
+
+
+<div id="post-nav" class="primary">
+	<div class="item clear">
+		<label class="t bold color-blue">任务发布向导</label>
+		<label class="s color-gray">（第二步：填写任务的具体内容以及地理位置、价格等。）</label>
+	</div>
+	<div class="task-title item" style="margin-top:50px;">
+		<div class="row clear">
+			<div class="col">
+				<img src="{% get_static_prefix %}{{ TASK_TYPE|get_logo_url_from_tasktype }}" />
+				<input type="hidden" value="{{ TASK_TYPE.id }}" name="task_type" />
+			</div>		
+			<div class="col">
+				<div class="row s color-brown item-desc">任务标题</div>
+				<div class="row">
+					<input type="text" maxlength="24" name="task_title" class="ss input-txt-nonimg" style="width:600px;"/>
+				</div>
+			</div>		
+
+		</div>
+	</div>
+	<div class="border-bottom-line clear"></div>
+	<div class="task-describe item clear">
+		<div class="row item-desc">
+			<label class="s color-brown icon-quesion qtipitem" 
+			title="请不要在任务描述中公开具体地点和您的联系方式，因为这些内容对所有人都是公开的。">
+			任务描述
+			</label>
+			<label class="ss color-gray" style="margin-left:10px;">这个描述任何人可见。</label>
+			<label class="color-gray">
+				<a class="add-private-msg qtipitem" 
+					href="#" title="私密信息只有获得了该任务的打杂兔可以看到。">
+						添加私密信息
+				</a>
+			</label>
+		</div>
+		<div class="row">
+			<textarea name="task_describe" maxlength="140" class="input-txt-nonimg ss" style="line-height:20px;width:98%;height:134px;"></textarea>
+		</div>
+		<div class="row private-msg" style="display:none;">
+			<div class="row ss color-brown item-desc">
+				<div class="icon-lock-closed">私有信息</div>
+			</div>
+			<div class="row">
+				<textarea name="task_private_describe" maxlength="140" class="input-txt-nonimg ss" style="line-height:20px;width:98%;height:80px;"></textarea>
+			</div>
+			<div class="row">
+				<div class="icon-gray-lock ss color-gray">私有信息只有获得该任务的打杂兔可以看见。</div>
+			</div>
+		</div>
+	</div>
+	<div class="border-bottom-line clear"></div>
+	<div class="item clear">
+		<div class="row">
+			<div class="col">
+				<div class="icon-location"></div>
+			</div>
+			<div class="col">
+				<div class="row">
+					<div class="icon-gray-lock ss color-gray">完整的地址只有获得该任务的打杂兔才能看到。</div>
+				</div>
+				<div class="row locations">
+				</div>
+				<div class="row clear">
+					<div>
+						<a class="add-a-location" href="#add-location">+添加位置标签+</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<div class="border-bottom-line clear"></div>
+	<div class="item clear" >
+		<div class="row">
+			<div class="col">
+				<div class="icon-coins"></div>
+			</div>
+			<div class="col">
+				<div class="row">
+					<label class="s color-brown">
+						需要打杂兔预付金额
+						<select name="task_helper_payment">
+							<option value="0">0元</option>
+							<option value="10">少于10元</option>
+							<option value="20">少于20元</option>
+							<option value="50">少于50元</option>
+							<option value="100">少于100元</option>
+						</select>
+					</label>
+				</div>
+				<div class="row">
+					<label class="ss color-gray">预付金额将被计算进您的任务酬金总额中。</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="border-bottom-line clear"></div>
+	<div class="item clear">
+		<div class="row">
+			<div class="col">
+				<div class="icon-gold"></div>
+			</div>
+			<div class="col">
+				<div class="row">
+					<label class="s color-brown">您打算为该任务支付多少酬金？</label>
+				</div>
+				<div class="row">
+					<label class="g color-gray">
+						<input name="task_price" type="text" maxlength="3" class="input-txt-nonimg m color-orange bold" style="width:100px;" />
+						.00元
+					</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="border-bottom-line clear"></div>
+	<div class="item clear">
+		<div class="row">
+			<div class="button-red-ext-long go-to-next" style="float:right;margin-right:80px;">继续</div>
+		</div>
+	</div>
+	<div class="blank clear"></div>	
+</div>
+<div class="location-template row" style="display:none">
+	<div class="location row">
+		<div class="row">
+			<div class="col">
+				<div class="row s color-brown item-desc">位置标签</div>
+				<div class="row">
+					<input type="text" maxlength="255" class="s input-txt-nonimg" />
+				</div>
+			</div>
+			<div class="col">
+				<div class="row s color-brown item-desc">地址</div>
+				<div class="row">
+					<input type="text" class="s input-txt-nonimg" style="width:350px;" />
+				</div>
+			</div>
+			<div class="col">
+				<div class="row remove-link">
+					<a href="#remove-location">取消</a>
+				</div>
+			</div>
+		</div>
+		<div class="row clear">
+			<div class="col">
+				<div class="row s color-brown item-desc">省/直辖市/特区</div>
+				<div class="row">
+					<input type="text" class="s input-txt-nonimg" />
+				</div>
+			</div>
+			<div class="col">
+				<div class="row s color-brown item-desc">市/区/县</div>
+				<div class="row">
+					<input type="text" class="s input-txt-nonimg" style="width:200px;" />
+				</div>
+			</div>
+			<div class="col">
+				<div class="row s color-brown item-desc">邮编</div>
+				<div class="row">
+					<input type="text" maxlength="6" class="s input-txt-nonimg" style="width:140px;" />
+				</div>
+			</div>									
+		</div>
+		<div class="row clear">
+			<div class="item-desc ss color-brown">
+				<label><input type="checkbox" />为我保存这个标签，以后使用。</label>
+			</div>
+		</div>		
+	</div>
+</div>				
+<div id="pre-post" class="dialogbox">
+	<div class="first-label"></div>
+	<div class="second-label"></div>
+	<img class="clsbtn" src="{% get_static_prefix %}images/popWinClos.png" title="关闭"/>
+	<div id="dialog-content" class="content clear" >
+	</div>
+</div>	
+		
+{% endblock %}	
+{% block layout_right %}
+<div class="item" style="background-color:#f8f2d5;">
+	<div class="row" style="padding:5px;">
+		<div class="base-info title color-blue ss bold">您的小贴士</div>
+		<div class="row">
+			<div class="col">
+				<img src="{% get_static_prefix %}{{ TASK_TYPE|get_logo_url_from_tasktype }}"
+					width="50"
+					height="50"
+				/>
+			</div>
+			<div class="col">
+				<div class="color-blue-lighter ss bolder">
+					{{ TASK_TYPE.name }}类型的任务
+				</div>
+				<div class="color-brown italic">
+				{% ifequal REQUEST.task_repeat_freq '0' %}
+					这个任务不需要重复完成。
+				{% else %}
+					这个任务需要每{{ REQUEST.task_repeat_freq }}周完成一次。
+				{% endifequal %}
+				</div>
+			</div>
+		</div>
+		<div class="row clear">
+			<div class="color-brown bold ss">任务分配：</div>
+			<div class="color-brown italic">
+				{{ REQUEST.task_assign_model|get_friend_assignmodel_from_code }}
+				
+			</div>
+		</div>
+		<div class="row clear" style="text-align:right;">
+			<a href="#" class="s opt-change-task-tip">修改</a>
+		</div>
+	</div>
+<div class="side-sep-line clear"></div>
+</div>
+<div class="item">
+	<div class="row clear">
+		<div class="title color-blue ss bolder">截止日期设定</div>
+		<div class=" border-bottom-line "></div>
+		<div class="row clear">
+			<div class="icon-calender-sm clear ss color-gray-darker">
+			这个任务在以下时间前完成：
+			</div>
+			<div style="padding-left:40px;" class="clear">
+				<a href="#" class="opt-change-deadline" ></a>
+			</div>
+			<div class="opt-deadline" style="display:none;padding-left:40px;">
+				<div class="row clear">
+					<div class="title color-brown ss">分配截止时间：</div>
+					<label style="line-height:50px;">
+						<input type="text" 
+							maxlength="19" 
+							readonly 
+							class="input-txt-nonimg left" 
+							style="height:30px;width:75%;" 
+							value="2012-01-01 20:00:00"
+							id="assigned_deadline"
+						/>
+						<div class="icon-calender-sm-15x14 left margin-left-5px"></div>
+					</label>
+				</div>	
+				<div class="row clear">
+					<div class="title color-brown ss">完成截止时间：</div>
+					<label style="line-height:50px;">
+						<input type="text" 
+							maxlength="19" 
+							readonly 
+							class="input-txt-nonimg left" 
+							style="height:30px;width:75%;" 
+							value="2012-01-02 20:00:00"
+							id="finished_deadline"
+						/>
+						<div class="icon-calender-sm-15x14 left margin-left-5px"></div>
+					</label>
+				</div>				
+			</div>
+		</div>
+		<div class=" border-bottom-line clear "></div>
+	</div>
+</div>
+<div class="item">
+	<div class="row">
+		<div class="title color-blue ss bolder">其他要求/条件</div>
+		<div class=" border-bottom-line "></div>
+		<div>
+			<label class="ss color-brown">
+				<input id="is_by_virtual" type="checkbox" />可用在线或其他虚拟方式完成。
+			</label>			
+		</div>
+		<div>
+			<label class="ss color-brown">
+				<input id="id_by_vehicle" type="checkbox" />需要自备运输工具。
+			</label>		
+		</div>
+		<div class=" border-bottom-line "></div>
+	</div>
+</div>
+</form>
+{% endblock %}	

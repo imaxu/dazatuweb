@@ -1,0 +1,271 @@
+#center{
+	margin:0 auto;
+	width:100%;
+	margin-top:25px;
+}
+#center .title-bg{
+	background-color:#e2f3ac;
+	height:28px;
+	line-height:28px;
+	width:100%;
+}
+#center .title-txt{
+	margin-left:1.5em;
+}
+#welcome{
+	height:175px;
+}
+#welcome .col-left,
+#welcome .col-right{
+	float:left;
+}
+#welcome .col-left{
+	width:60%;
+}
+#welcome .col-right{
+
+}
+#dashboard{
+
+}
+
+#dashboard .logo{
+	background-image:url('../../images/user_center/person.png');
+	background-repeat:no-repeat;
+	width:14px;
+	height:16px;
+	
+}
+#dashboard .p_content{
+	margin-top:10px;
+}
+#dashboard  .col-left,
+#dashboard  .col-right{
+	float:left;
+}
+#dashboard  .col-left{
+	width:60%;
+}
+#dashboard .p_content .col-left .row-0 .col-0,
+#dashboard .p_content .col-left .row-0 .col-1{
+	float:left;
+}
+#dashboard .p_content .col-left .row-0 .col-0{
+	width:81px;
+}
+#dashboard .p_content .col-left .row-0 .col-1{
+	margin-left:10px;
+	margin-top:5px;
+}
+#dashboard .p_content .col-left .row-1{
+	padding-top:10px;
+	width:100%;
+
+}
+#dashboard #person-info-progress{
+	width:176px;
+}
+	#person-info-progress .person-info-progress-bg{
+		background-image:url('../../images/user_center/p_info_progress_bg.png');
+		width:100%;
+		height:18px;
+	}
+	#person-info-progress .person-info-progress{
+		background-color:#ff6707;
+		height:100%;
+		background-image:url('../../images/user_center/p_info_progress.png');
+	}
+	#person-info-progress .person-info-progress-percent-bg{
+		width:37px;
+		height:25px;
+		line-height:30px;
+		text-align:center;
+		background-image:url('../../images/user_center/p_info_progress_percent_bg2.png');
+		background-repeat:no-repeat;
+	}
+#dashboard .p_content .col-left .row-1 .col{
+	float:left;
+}
+#dashboard .p_content .col-left .row-2 #p_menu{
+	width:100%;
+	padding-top:30px;
+}
+	#p_menu div{
+		float:left;
+		padding-right:10px;
+		text-indent:1.5em;
+		width:50px;
+	}
+	#p_menu .m_info{
+		background-image:url('../../images/user_center/m_info_symbol.png');
+		background-repeat:no-repeat;
+		height:16px;
+		width:75px;
+
+	}
+	#p_menu .m_account{
+		background-image:url('../../images/user_center/m_account_symbol.png');
+		background-repeat:no-repeat;
+		height:16px;
+	}
+	#p_menu .m_task{
+		background-image:url('../../images/user_center/m_task_symbol.png');
+		background-repeat:no-repeat;
+		height:16px;
+	}
+	#p_menu .m_relation{
+		background-image:url('../../images/user_center/m_relation_symbol.png');
+		background-repeat:no-repeat;
+		height:16px;
+	}
+	#p_menu .m_message{
+		background-image:url('../../images/user_center/m_message_symbol.png');
+		background-repeat:no-repeat;
+		height:16px;
+	}
+#ext-menu{
+	padding-top:10px;
+}
+.dazatu-item{
+	margin-top:30px;
+	width:235px;
+	float:left;
+}
+.dazatu-item .headimage,
+.dazatu-item .ext-info{
+	float:left;
+}
+
+.dazatu-item .headimage img{
+	border-radius:5px 5px 5px 5px;
+	-webkit-border-radius:5px 5px 5px 5px;
+	-o-border-radius:5px 5px 5px 5px;
+	-moz-border-radius:5px 5px 5px 5px;
+	-ms-border-radius:5px 5px 5px 5px;
+}
+.dazatu-item .ext-info{
+	margin-left:5px;
+}
+.dazatu-item .headimage .level{
+	float:bottom;
+	background-image:url('../../images/user_level_bg.png');
+	background-repeat:no-repeat;
+	height:32px;
+	width:32px;
+	position:relative;
+	top:-20px;
+	left:-10px;
+	line-height:32px;
+	text-align:center;
+}
+.dazatu-item .ext-info .name{
+	height:35px;
+}
+.dazatu-list .add .headimage{
+	background-image:url('../../images/add_bg1.png');
+	background-repeat:no-repeat;
+	height:50px;
+	width:50px;
+	cursor:pointer;
+}
+.dazatu-list .add .headimage:hover{
+	background-position:0px -51px;
+}
+#dashboard  .col-right div{
+	margin-top:10px;
+}
+
+
+
+#tasks{
+	padding-top:20px;
+}
+#tasks .logo{
+	background-image:url('../../images/user_center/gear.png');
+	background-repeat:no-repeat;
+	width:17px;
+	height:17px;
+}
+#tasks #tasks-list{
+	width:100%;
+}
+	#tasks-list .list{
+		width:100%;
+	}
+	#tasks-list .list .item {
+		margin-top:30px;
+		height:65px;
+		width:100%;
+		border-bottom:1px solid #e1e1e1;
+	}
+	#tasks-list .list .item .col{
+		float:left;
+		margin-right:5px;
+	}
+	#tasks-list .list .item .options{
+		text-align:center;
+		padding-top:10px;
+		float:right;
+	}
+	.get-more{
+		margin-top:10px;
+		margin-bottom:15px;
+		float:right;
+		width:75px;
+		height:30px;
+		border:1px solid #fbbe00;
+		border-radius:5px 5px 5px 5px;	
+		-webkit-border-radius:5px 5px 5px 5px;	
+		-moz-border-radius:5px 5px 5px 5px;	
+		-ms-border-radius:5px 5px 5px 5px;	
+		-o-border-radius:5px 5px 5px 5px;	
+		box-shadow:2px 2px 2px #e1e1e1;
+		-webkit-box-shadow:2px 2px 2px #e1e1e1;
+		-moz-box-shadow:2px 2px 2px #e1e1e1;
+		text-align:center;
+		line-height:30px;
+		color:#ff7800;
+		cursor:pointer;
+	}
+	.get-more:hover{
+		background-color:#ff7800;
+		color:#fff;
+	}
+	
+/*  right side */
+	/* override base_lr.css */
+	.primary-box .right-box{
+		height:auto;
+	}
+#side-list{
+	width:100%;
+	margin-top:15px;
+	padding-left:20px;
+}
+#side-list .item{
+	margin-bottom:10px;
+}
+#side-list .item .row{
+	padding-top:10px;
+}
+#side-list .item .row .col{
+	float:left;
+}
+#side-list .item  .title{
+	width:94%;
+}
+#side-list .item  .cls{
+	width:auto;
+	float:right;
+}
+#side-list .item .describe{
+	width:59%;
+}
+#side-list .item  .symbol{
+	width:40%;
+	text-align:center;
+}
+#side-list .item .button-gray-ext-long{
+}
+
+/**/

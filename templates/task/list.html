@@ -1,0 +1,108 @@
+{% extends "base-lr.html" %}
+{% load static %}
+{% load task_extra %}
+{% load users_extra %}
+{% block page_title %}
+任务列表
+{% endblock %}
+{% block page_head_addtional %}
+<link href="{% get_static_prefix %}styles/tabs.css" rel="stylesheet" rev="stylesheet" type="text/css" />
+<link href="{% get_static_prefix %}styles/task/list.css" rel="stylesheet" rev="stylesheet" type="text/css" />
+<script src="{% get_static_prefix %}scripts/task/list.js" type="text/javascript"></script>
+{% endblock %}
+{% block layout_left %}
+<div id="list" class="primary">
+	<div class="title-bg">
+		<label class="logo" />
+		<span class="title-txt ss bold color-blue-darker">任务动态</span>
+	</div>
+	<div class="list">
+		<div class="list-wrap clear">
+			<ul>
+				<li><a href="#tabs-recommend">推荐任务</a></li>
+				<li><a href="#tabs-newest">最新任务</a></li>
+			</ul>
+			<div id="tabs-recommend">
+				<div class="list">
+					{% for task in RECOMMEND_TASKS %}
+					<div class="item">
+						<div class="headimage col">
+							<img class="img-radius" src="{% get_media_prefix %}{{ task.user|get_user_headimage_from_user }}" 
+							title="{{ task.user.first_name }}{{ task.user.appellation }}" />
+						</div>
+						<div class="content col">
+							<div class="ss color-blue-lighter bold">
+								<a href="/task/details/{{ task.id }}/">{{ task.title }}</a>
+							</div>
+							<div class="less-normal color-brown">{{ task.describe }}</div>
+							<!--
+							<div class="less-normal color-gray">
+							任务赏金在<label class="color-orange">￥35-45</label>之间</div>
+							-->
+						</div>
+						<div class="options col">
+							{% if IS_LOGINED %}
+							<div class="button-gray2">复制任务</div>
+							{% endif %}
+						</div>
+					</div>
+											
+					{% empty %}
+					<div style="height:50px;line-height:50px;">还没有人发布任务，抢先发布任务并成功被打杂兔完成，您将有机会获得我们的大礼哦！</div>
+					<div class="button-gray2">立刻发布</div>
+					{% endfor %}
+					<div class="page-nav">
+						{{ RECOMMEND_TASKS_PAGE_NAV|print_page_nav:"{'addtion':'#tabs-recommend','link':'/task/list/'}"|safe }}
+					</div>								
+				</div>
+			</div>
+			<div id="tabs-newest">
+				<div class="list">
+					{% for task in NEWEST_TASKS %}
+					<div class="item">
+						<div class="headimage col">
+							<img class="img-radius" src="{% get_media_prefix %}{{ task.user|get_user_headimage_from_user }}" 
+							title="{{ task.user.first_name }}{{ task.user.appellation }}" />
+						</div>
+						<div class="content col">
+							<div class="ss color-blue-lighter bold">{{ task.title }}</div>
+							<div class="less-normal color-brown">{{ task.describe }}</div>
+							<div class="less-normal color-gray">
+							发布于<label class="color-orange">{{ task.posttime|date:"m月d日" }}</label></div>
+						</div>
+						<div class="options col">
+
+							{% if IS_LOGINED %}
+							<div class="button-gray2">复制任务</div>
+							{% endif %}
+						</div>
+					</div>
+												
+					{% empty %}
+					<div style="height:50px;line-height:50px;">还没有人发布任务，抢先发布任务并成功被打杂兔完成，您将有机会获得我们的大礼哦！</div>
+					<div class="button-gray2">立刻发布</div>
+					{% endfor %}
+					<div class="page-nav">
+						{{ NEWEST_TASKS_PAGE_NAV|print_page_nav:"{'addtion':'#tabs-newest','link':'/task/list/'}"|safe}}					
+					</div>							
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+{% endblock %}
+
+
+{% block layout_right_addtional %}
+{% if IS_LOGINED %}
+	<div class="item">
+		<div class="color-gray-darker s_in bold" style="margin-bottom:20px;">发布您的第一个任务，便可获得价值<label class="color-orange" >5元</label>的赏金券</div>
+		<div class="button-green-big">
+			<img src="{% get_static_prefix %}images/txt-faburenwu.png" style="margin-top:12px;"/>
+		</div>
+		<div class="blank"></div>
+		<div class="blank"></div>
+		<div class="side-sep-line"></div>
+	</div>
+{% endif %}
+{% endblock %}

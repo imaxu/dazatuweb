@@ -1,0 +1,201 @@
+{% extends "base-lr.html" %}
+{% load static %}
+{% load task_extra %}
+{% block page_title %}
+{{ TASK.title }}
+{% endblock %}
+{% block page_head_addtional %}
+<link href="{% get_static_prefix %}styles/task/post_review.css" rel="stylesheet" rev="stylesheet" type="text/css" />
+<script src="{% get_static_prefix %}scripts/task/post_review.js" type="text/javascript"></script>
+{% endblock %}
+{% block layout_left %}
+<div id="post-review" class="primary  color-brown">
+    <div class="item clear">
+        <div class="row">
+            <label class="t bold color-blue">任务发布向导</label>
+            <label class="s color-gray">（第三步：回顾任务设置并发布。）</label>
+        </div>
+        <div class="row">
+            <div class="ss color-brown bold">
+                当您发布了您的任务后，系统会自动把任务分配给出价最低的打杂兔。
+            </div>
+        </div>
+    </div>
+    <div class="item clear">
+        <div class="title-bg"></div>
+        <div class="blank clear"></div>            
+        <div class="row">
+            <div class="col">
+                <img src="{% get_static_prefix %}{{ TASK.task_type|get_logo_url_from_tasktype }}" />
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="blank clear"></div>    
+                    <div id="describe" class="row">
+                        <div class="title g bold color-blue-lighter">{{ TASK.title}}</div>
+                    </div>                
+                </div>
+                <div class="row">
+                    <div class="s_in bold">{{ TASK.task_type.name }}类任务</div>
+                </div>
+                <div class="row">
+                    <div class="s_in">北京市</div>
+                </div>                
+            </div>            
+        </div>
+        <div class="blank clear"></div>    
+    </div>
+    <div class="item clear">
+        <div class="border-bottom-line"></div>
+    </div>
+    <div class="item clear">
+        <div class="row">
+            <div class="title s_in bold title-bg-gray">描述</div>
+        </div>
+        <div class="blank clear"></div>
+        <div class=" describe row s_in">
+            {{ TASK.describe }}{{ TASK.done_with_virtual }}
+            {% ifnotequal TASK.done_with_virtual "None" %}
+            <div>
+                附加条件1：可以通过电话或其他虚拟方式完成。
+            </div>
+            {% endifnotequal %}
+        </div>
+
+    </div>
+	{% ifnotequal TASK.private_describe "" %}
+    <div class="item clear">
+        <div class="row">
+            <div class="title s_in bold title-bg-gray left">
+                <div class="left">私密信息</div>
+                <div class="icon-lock-closed-sm more-less-normal color-gray left margin-left-10px">这是私密信息</div>
+            </div>
+            
+        </div>
+        <div class="blank clear"></div>
+        <div class="row s_in">
+            {{ TASK.private_describe }}
+        </div>
+    </div>  
+	{% endifnotequal %}	
+    <div class="item clear">
+        <div class="row">
+            <div class="title s_in bold title-bg-gray">任务时间</div>
+        </div>
+        <div class="blank clear"></div>
+        <div class="row s_in">
+            任务分配期限：{{ TASK.assigned_deadline }}
+        </div>
+        <div class="row s_in">
+            任务完成期限：{{ TASK.finished_deadline }}
+        </div>        
+    </div>    
+    <div class="item clear">
+        <div class="row">
+            <div class="title ">
+                <div class="s_in bold title-bg-gray">任务分配模式</div>
+            </div>
+        </div>
+        <div class="blank clear"></div>
+        <div class="row">
+            <label class="s_in">{{ TASK.assignment_type }}</label>
+        </div>
+    </div>
+    <div class="item clear">
+        <div class="row">
+            <div class="title">
+                <div class="s_in bold title-bg-gray">
+                    <div class="left">任务地址</div>
+                    <div class="icon-lock-closed-sm more-less-normal color-gray left margin-left-10px">这是私密信息</div>
+                </div>
+            </div>
+        </div>
+        <div class="blank clear"></div>
+        <div class="row">
+            <div class="col">
+                <div class="s_in">
+                    <div class="row">任务出发地：</div>
+                    <div class="row">北京市，海淀区，知春路，100000</div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="s_in">
+                    <div class="row">任务目的地：</div>
+                    <div class="row">北京市，石景山区，古城，100000</div>
+                </div>
+            </div>
+        </div>
+    <div class="border-bottom-line clear"></div>        
+    </div>
+    <div class="blank"></div>
+    <div class="blank"></div>
+    <div class="blank"></div>
+    <div class="item clear">
+        <div class="row">
+            <div class="col">
+                <div class="button-gray-ext-long">修改任务</div>
+            </div>
+            <div class="col">
+                <div class="button-red-ext-long">提交任务</div>
+            </div>
+        </div>
+    </div>
+    <div class="blank clear"></div>
+    <div class="blank clear"></div>
+    <div class="blank clear"></div>
+</div>
+{% endblock %}
+
+{% block layout_right %}
+<div class="item clear">
+    <div class="row">
+        <div class="s_in color-blue-lighter bold">费用预计</div>
+    </div>
+    <div class="row clear ss color-brown">
+        <div class="col left">
+            <div class="bold">任务酬金：</div>
+        </div>
+        <div class="col right text-align-right">
+            <div>低于{{ TASK.price }}元</div>
+        </div>
+    </div>
+    <div class="row clear ss color-brown">
+        <div class="col left">
+            <div class="bold">其他支付：</div>
+        </div>
+        <div class="col right text-align-right">
+            <div>{{ TASK.helper_payment }}元</div>
+        </div>
+    </div>    
+    <div class="border-bottom-line clear"></div>
+    <div class="row clear ss color-brown">
+        <div class="col left">
+            <div class="bold">预计要支付：</div>
+        </div>
+        <div class="col right text-align-right">
+            <div>低于0元</div>
+        </div>
+    </div>
+    <div class="row clear">
+        <div class="less-normal color-gray">（需要支付的金额只有在任务成功完成后才会支付给打杂兔。）</div>
+    </div>
+</div>
+
+<div class="item clear">
+    <div class="row">
+        <div class="color-orange bold s">遇到问题了？</div>
+    </div>
+    <div class="row">
+        <div class="color-brown ss">
+            <label>客服电话：</label>
+            <label>010-00000000</label>
+        </div>
+    </div>    
+    <div class="row">
+        <div class="color-brown ss">
+            <label>QQ：</label>
+            <label>000000</label>
+        </div>
+    </div>        
+</div>
+{% endblock %}

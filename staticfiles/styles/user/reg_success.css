@@ -1,0 +1,123 @@
+﻿#reg_success{
+	width:90%;
+	margin:0 auto;
+}
+
+.dialogtip{
+	text-align:left;
+}
+
+#reg_success .options{
+	
+}
+
+#reg_success .options .opt{
+	float:left;
+	width:132px;
+	cursor:pointer;
+	text-align:center;
+}
+#reg_success .options .opt:hover{
+	background-color:#f8f2cb;
+	border:1px dashed #e1e1e1;
+}
+#reg_success .options .opt .subject {
+	height:30px;
+}
+#symbol_info{
+	background-image:url('../../images/symbol/reg_info.png');
+	background-repeat:no-repeat;
+	width:83px;
+	height:95px;
+	margin:0 auto;
+}
+#symbol_info:hover{
+	background-position:-86px 0px;
+}
+#symbol_training{
+	background-image:url('../../images/symbol/reg_training.png');
+	background-repeat:no-repeat;
+	width:83px;
+	height:95px;
+	margin:0 auto;
+}
+#symbol_training:hover{
+	background-position:-83px 0px;
+}
+#symbol_dazatu{
+	background-image:url('../../images/symbol/reg_dazatu.png');
+	background-repeat:no-repeat;
+	width:78px;
+	height:95px;
+	margin:0 auto;
+}
+#symbol_dazatu:hover{
+	background-position:-78px 0px;
+}
+#symbol_tasks{
+	background-image:url('../../images/symbol/reg_tasks.png');
+	background-repeat:no-repeat;
+	width:84px;
+	height:95px;
+	margin:0 auto;
+}
+#symbol_tasks:hover{
+	background-position:-84px 0px;
+}
+.sharesubject{
+	width:100%;
+	text-align:left;
+	height:27px;
+	line-height:25px;
+	background-color:#f7e252;
+}
+.sharecontext{
+
+}
+.sharecontext .left,
+.sharecontext .right{
+	float:left;
+}
+.sharecontext .left{
+	width:118px;
+}
+.sharebuttons{
+	width:418px;
+	margin-left:118px;
+}
+.sharebuttons .btn{
+	width:100px;
+	float:left;
+
+}
+.button{
+	width:85px;
+	height:33px;
+	cursor:pointer;	
+}
+#to_t_qq_com{
+	background-image:url('../../images/buttons/t_qq_com.png');
+	background-repeat:no-repeat;
+}
+#to_weibo_com{
+	background-image:url('../../images/buttons/weibo_com.png');
+	background-repeat:no-repeat;
+}
+#to_163_com{
+	background-image:url('../../images/buttons/163_com.png');
+	background-repeat:no-repeat;
+}
+.mark1{
+	cursor:help;
+}
+
+.gotoanyway{
+	height:30px;
+	line-height:30px;
+	width:100%;
+	text-align:right;
+	
+}
+.optbg_hover{
+	background-color:red;
+}

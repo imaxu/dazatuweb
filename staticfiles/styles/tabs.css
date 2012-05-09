@@ -1,0 +1,19 @@
+/* override jq-ui-1.8.16.custom.css */
+.ui-tabs a{
+	color:#0066cc;
+	text-decoration:none;
+}
+.ui-tabs a:hover{
+	text-decoration:underline;
+}
+.ui-widget-header{
+	background:none;
+}
+.ui-widget-header{
+	border:none;
+	border-bottom: 1px solid #aaaaaa;
+}
+.ui-widget-content{
+	border:none;
+}
+/* override jq-ui-1.8.16.custom.css END */

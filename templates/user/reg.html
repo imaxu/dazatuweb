@@ -1,0 +1,193 @@
+{% extends "base-lr.html" %}
+{% block page_title %}
+{{ PAGE_TITLE }}
+{% endblock %}
+{% load static %}
+	{% block page_head_addtional %}
+	<link href="{% get_static_prefix %}styles/user/reg.css" rel="stylesheet" rev="stylesheet" type="text/css" />
+	<script src="{% get_static_prefix %}scripts/user/reg.js" type="text/javascript"></script>
+	{% endblock %}
+	{% block layout_left %}
+	<div>
+		<div id="first-row" class="clear row bold g color-blue-darker">申请新帐号</div>
+		<div id="second-row" class="clear row">
+			<div class="step-nav clear">
+				<div id="grp-0" class="step-item curr-step">
+					<div class="text">1. 基本信息</div>
+					<div class="symbol"></div>
+				</div>
+				<div id="grp-1" class="step-item not-curr-step">
+					<div class="text">2. 实名信息</div>
+					<div class="symbol"></div>									
+				</div>
+				<div id="grp-2" class="step-item not-curr-step">
+					<div class="text">3. 提交注册信息</div>
+					<div class="symbol"></div>									
+				</div>
+			</div>
+			<form id="user-reg-area"  class="clear">						
+				<div id="step-0" class="regform">
+					<div class="form">
+						<div class="form-row clear">
+							<label for="#u_email" class="subject s color-brown">电子邮件</label>
+							<div class="control">
+								<input id="u_email" type="text" class="it-m" value="{{ U_EMAIL }}" rules="{required:true,email:true,messages:{required:'请您输入正确的电子邮箱格式。',email:'请您输入正确的电子邮箱格式。'}}" />
+								<div id="u_email_tip" for="u_email"  class="assist-msg ss" data="电子邮件将作为您的登录帐号,如yourname@domain.com。"></div>
+							</div>
+							<div class="hint-msg"></div>
+						</div>
+						<div class="form-row clear">
+							<label for="#u_pwd" class="subject s color-brown">设置密码</label>
+							<div class="control">
+								<input id="u_pwd" type="password"  class="it-m" maxlength="16" rules="{required:true,rangelength: [6,16],messages:{required:'请您输入6-16位由数字、符号、大小写字母组成的密码。',rangelength:'请至少输入6位长度的密码。'}}"/>
+								<div id="u_pwd_tip" class="assist-msg ss" data="请您输入6-16位由数字、符号、大小写字母组成的密码。"></div>
+							</div>
+							<div class="hint-msg">
+								<div>密码强度：</div>
+								<div id="pass-stat">
+									<div id="stat-weak" class="stat off">弱</div>
+									<div id="stat-norm" class="stat off">中</div>
+									<div id="stat-stro" class="stat off">强</div>
+								</div>
+							</div>									
+						</div>
+						<div class="form-row clear">
+							<label for="#u_repwd" class="subject s color-brown">重复密码</label>
+							<div class="control">
+								<input id="u_repwd" type="password" class="it-m" rules="{required:true,equalTo:'#u_pwd',messages:{required:'请您再次输入密码。',equalTo:'两次密码输入不一致。'}}"/>
+								<div  id="u_repwd_tip" for="u_repwd" class="assist-msg ss" data="请您再输入一次设置的密码，确保一致。"></div>
+							</div>
+							<div class="hint-msg"></div>								
+						</div>
+					</div>
+				</div>
+				<div id="step-1" class="regform">
+					<div class="form">
+						<div class="form-row clear">
+							<label for="#u_fname" class="subject s color-brown">真实姓名</label>
+							<div class="control">
+								<input id="u_fname" type="text" class="it-s" maxlength="2" rules="{required:true,cn_name:true,messages:{required:'请输入您真实的姓氏，打杂兔们更喜欢真实的信息。'}}"/>
+								<input id="u_lname" type="text" class="it-s" maxlength="3" rules="{required:true,cn_name:true,messages:{required:'请输入您真实的名字，您的名字我们不会公开。'}}"/>
+								<div class="assist-msg ss">
+									<div id="u_fname_tip" data="请输入您真实的姓氏，打杂兔们更喜欢真实的信息。"></div>											
+									<div id="u_lname_tip" data="请输入您真实的名字，您的名字我们不会公开。"></div>
+								</div>
+							</div>
+							<div class="hint-msg"></div>
+						</div>
+						<div class="form-row clear">
+							<label for="#u_appellation" class="subject s color-brown">选择称谓</label>
+							<div class="control">
+								<div id="appellation">请选择称谓</div>
+								<div style="display:none"><input type="text" id="u_appellation" rules="{required:true,messages:{required:'请选择一个称谓。'}}" /></div>
+								<div class="assist-msg ss">
+								<img src="{% get_static_prefix %}images/em/attention.png" width="16" height="16" title="请您注意" />
+								在使用网站服务时，我们将公开使用您选择的称谓 <label id="u_selfname"></label><label id="u_selappe"></label> 向其他人介绍您。
+								</div>
+							</div>
+							<div id="u_appellation_tip" class="hint-msg" data="请您选择一个称谓，这样我们可以向别人介绍您。">
+							</div>									
+						</div>
+						<div class="form-row clear">
+							<label for="#u_idcard" class="subject s color-brown">二代身份证</label>
+							<div class="control">
+								<input id="u_idcard" type="text" class="it-m" maxlength="18" rules="{required:true,cn_idcard:true,messages:{required:'请输入真实有效的18位二代身份证号码。',cn_idcard:'请输入真实有效的18位二代身份证号码。'}}"  />
+								<div id="u_idcard_tip" class="assist-msg ss" data="请输入真实有效的18位二代身份证号码。"></div>
+							</div>
+							<div class="hint-msg"></div>								
+						</div>
+						<div class="form-row clear">
+							<label for="#u_mphone" class="subject s color-brown">移动电话</label>
+							<div class="control">
+								<input id="u_mphone" type="text" class="it-m" maxlength="11" rules="{required:true,cn_mobile:true,messages:{required:'请输入真实有效的手机号码，我们将依此进行身份验证。'}}"  />
+								<div id="u_mphone_tip" class="assist-msg ss" data="请输入真实有效的手机号码，我们将依此进行身份验证。"></div>
+							</div>
+							<div class="hint-msg"></div>								
+						</div>									
+					</div>							
+				</div>
+				<div id="step-2" class="regform">
+					<div class="context">
+						<div class="context-row l bold color-blue-lighter">
+							<img src="{% get_static_prefix %}images/em/attention.png" width="16" height="16" />
+							<label id="prevfname1"></label>
+							<label id="prevappe"></label> :
+						</div>
+						<div class="context-row ss bold color-orange indent">
+							请您再次核对以下信息，提交后将不能自由更改。
+						</div>
+						<div class="blank"></div>
+						<div class="blank"></div>
+						<div class="blank"></div>
+						<div class="blank"></div>
+						<div class="context-row indent s color-brown">
+							<div class="subject">电子邮箱：</div>
+							<div id="prevemail"  class="content"></div>
+						</div>
+						<div class="context-row indent s color-brown">
+							<div class="subject">真实姓名：</div>
+							<div class="content">
+								<label id="prevfname2" ></label>
+								<label id="prevlname" ></label>
+							</div>									
+						</div>
+						<div class="context-row indent s color-brown">
+							<div class="subject">身份证信息：</div>
+							<div id="previdcard" class="content">
+							</div>									
+						</div>
+						<div class="context-row indent s color-brown">
+							<div class="subject">移动电话：</div>
+							<div id="prevmphone" class="content"></div>									
+						</div>									
+					</div>							
+				</div>
+			</form>
+			<div style="width:100%;" class="clear">
+				<div id="go-prev" class="ctrl-btn">
+					<div id="go-prev-btn" class="button-green">上一步</div>
+				</div>
+				<div id="go-next" class="ctrl-btn">
+					<div id="go-next-btn" class="button-red">继 续</div>
+				</div>
+				<div id="go-to-reg" class="ctrl-btn">
+					<div id="submit-btn" class="button-red">确 定</div>
+				</div>
+			</div>
+		</div>
+		<div id="third-row" class="clear row">
+			<form style="display:none;" action="/user/reg/post/" method="post">{% csrf_token %}
+				<input type="text" id="post_fname" />
+				<input type="text" id="post_lname" />
+				<input type="text" id="post_appe" />
+				<input type="text" id="post_pwd" />
+				<input type="text" id="post_idcard" />
+				<input type="text" id="post_mphone" />
+			</form>
+		</div>
+	</div>
+	<div  id="appe-selector-form">
+		<ul>
+			<li><a href="#" >先生</a></li>
+			<li><a href="#"  >女士</a></li>
+		</ul>
+	</div>
+	<div id="login-proc" class="dialogbox">
+		<div class="first-label"></div>
+		<div class="second-label"></div>
+		<img class="clsbtn" src="{% get_static_prefix %}images/popWinClos.png" title="关闭"/>
+		<div id="regresult" class="content clear">
+			正在提交注册信息。。。			
+		</div>
+	</div>	
+	{% endblock %}
+	{% block layout_right %}
+	<div id="row-0" class="clear">
+		<div class="subject s color-blue-lighter bold">直接登陆</div>
+		<div class="describe color-brown">如果您已经拥有了打杂兔会员帐号，请从这里直接登陆网站。</div>
+		<div class="control">
+			<div id="login-button" class="button-login"></div>
+		</div>
+	</div>
+	{% endblock %}
+		

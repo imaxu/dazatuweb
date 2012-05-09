@@ -1,0 +1,108 @@
+#details{}
+#task-describe .logo{
+	background-image:url('../../images/em/summary.png');
+	background-repeat:no-repeat;
+	width:15px;
+	height:15px;
+}
+#comments .logo{
+	background-image:url('../../images/em/comments.png');
+	background-repeat:no-repeat;
+	width:17px;
+	height:15px;	
+}
+#recommend-tasks .logo{
+	background-image:url('../../images/em/similar.png');
+	background-repeat:no-repeat;
+	width:18px;
+	height:16px;	
+}
+#details .item .row{
+}
+#recommend-tasks{
+	width:100%;
+}
+#recommend-tasks .list{
+		width:100%;
+}
+#recommend-tasks .list .item {
+		margin-top:30px;
+		height:65px;
+		width:100%;
+		border-bottom:1px solid #e1e1e1;
+}
+#recommend-tasks .list .item .col{
+	float:left;
+	margin-right:5px;
+}
+#recommend-tasks .list .item .headimage{
+	width:50px;
+}
+#recommend-tasks .list .item .content{
+	width:400px;
+}
+#recommend-tasks .list .item .options{
+	text-align:center;
+	padding-top:10px;
+	float:right;
+}
+#details .item .row .col{
+	width:70%;
+	text-indent:20px;
+}
+
+#details .item .row .describe{
+	padding-top:20px;
+	min-height:200px;
+	text-indent:1.5em;
+	width:100%;
+}
+
+#details .item .row .content{
+	margin-top:5px;
+}
+
+#details .item .row .subject{
+	margin-top:30px;
+}
+
+
+.right-box .prim-right .describe{
+	width:100%;
+	margin-bottom:10px;
+}
+
+
+#task-status{
+
+}
+
+#task-status .status{
+	background-color:#e2f3ac;
+	height:40px;
+	line-height:40px;
+	margin-top:2px;
+}
+#task-status .status .subject,
+#task-status .status .content,
+#task-status .status .symbol{
+	float:left;
+}
+#task-status .status .subject{
+	width:35%;
+	text-indent:1em;
+}
+#task-status .status .content{
+	width:50%;
+	height:100%;
+}
+#task-status .status .symbol{
+	width:auto;
+	padding-top:10px;
+	text-align:right;
+}
+#taskmap{
+	width:100%;
+	height:200px;
+	border:1px solid #e1e1e1;
+}

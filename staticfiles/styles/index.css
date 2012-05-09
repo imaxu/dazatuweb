@@ -1,0 +1,277 @@
+﻿/* structre */
+
+
+
+
+#box-0{
+	width:100%;
+	text-align:center;
+}
+#content-recommend{
+	width:1004px;
+	margin:0 auto;
+}
+#cont-reco-dazatu,
+#cont-reco-task{
+	float:left;
+	height:410px;
+}
+#cont-reco-dazatu{
+	width:635px;
+}
+#cont-reco-task{
+	width:367px;
+}
+
+#dazatu-sum{
+	margin-top:-90px;
+	width:100%;
+	height:50px;
+}
+#dazatu-sum-name{
+	float:left;
+}
+#dazatu-sum-leve{
+	float:left;
+}
+#dazatu-sum-name{
+	text-align:left;
+	text-indent:0.5em;
+}
+#dazatu-sum-expert-at{
+	text-align:left;
+	text-indent:1em;
+	height:35px;
+	line-height:35px;
+}
+
+.task-userhead-img{
+	float:left;
+
+}
+.task-userhead-img img{
+	border-radius:5px 5px 5px 5px;
+	-webkit-border-radius:5px 5px 5px 5px;
+	-o-border-radius:5px 5px 5px 5px;
+	-moz-border-radius:5px 5px 5px 5px;
+	-ms-border-radius:5px 5px 5px 5px;
+}
+.task-describe{
+	float:left;
+}
+.task-title,
+.task-price{
+	height:25px;
+	line-height:25px;
+}
+
+#box-login{
+	border-top:1px solid #ddd;
+	margin:0 auto;
+	width:1004px;
+	height:150px;
+	line-height:150px;
+	padding-top:30px;
+}
+#login-form{
+	padding-top:15px;
+}
+.login-bar{
+	margin:0px 0px 0px 300px;
+}
+
+#box-1{
+	width:1004px;
+	min-height:178px;
+	height:178px;
+	margin:0 auto;
+}
+
+.cont-1-item{
+	width:30%;
+	float:left;
+	margin-left:1em;
+}
+
+
+#box-2{
+	width:1004px;
+	height:240px;
+	min-height:240px;
+	margin:0 auto;
+}
+#box-2 .box-left{
+	width:635px;
+	height:100%;
+	margin-top:1px;
+	float:left;
+}
+#box-2 .box-right{
+	width:369px;
+	height:auto;
+	float:left;
+}
+#box-2 .title{
+	margin-left:1em;
+	height:30px;
+	line-height:30px;
+}
+#box-2 .contents{
+	margin-left:1em;
+}
+#box-2 .item{
+	float:left;
+	width:50%;
+	
+}
+#box-2 #map{
+	width:auto;
+	height:241px;
+	border:1px solid #e1e1e1;
+	border-top:none;
+}
+
+
+
+/* Elements */
+
+
+
+#cont-reco-task{
+	background-color:#fdf9eb;
+	text-align:left;
+}
+#dazatu-sum{
+	filter:alpha(opacity=80);
+	opacity:0.80;
+	background:#fff;
+	min-height:85px;
+	height:80px;
+
+}
+#dazatu-sum-name{
+	font-size:250%;
+	font-weight:900;
+	color:#0066cc;	
+}
+#dazatu-sum-leve{
+	padding-top:0.5em;
+}
+.leve-sta{
+	background-image:url('../images/star-58x10.png');
+	background-repeat:no-repeat;
+	width:60px;
+	margin-left:0.8em;	
+}
+.leve-num{
+	color:#000;
+	margin-left:0.7em;	
+}
+#dazatu-sum-expert-at{
+	font-size:120%;
+	color:#7d0000;
+}
+#cont-reco-task-list{
+	text-indent:1em;
+}
+#recent-tasks{
+	text-align:center;
+}
+#go-prev,#go-next{
+	cursor:pointer;
+}
+.task-title{
+	font-size:110%;
+}
+.task-price{
+	color:#ff7800;
+}
+
+.task-item{
+	width:100%;
+	height:60px;
+	padding-top:10px;
+	margin:0 auto;
+	text-align:left;
+}
+.sep-line{
+	width:92%;
+	height:2px;
+	margin:0 auto;
+}
+.arrow1-up{
+	text-align:center;
+}
+
+.arrow1-down{
+	text-align:center;
+	padding-top:5px;
+}
+
+#login-slogan{
+	font-size:200%;
+	height:50px;
+	line-height:50px;
+	text-align:center;
+
+}
+
+.login-bar{
+	background-image:url("../images/login-bar1.png");
+	background-repeat:no-repeat;
+	height:35px;
+	min-width:201px;
+	width:201px;
+	float:left;
+	border:0px;
+	font-size:120%;
+	text-indent:1em;
+}
+.login-btn{
+	background-image:url("../images/login-btn.png");
+	border:0px;
+	background-position:0px 0px;
+	background-repeat:no-repeat;
+	height:35px;
+	margin-left:-1.5px;
+	min-width:89px;
+	width:89px;
+	float:left;
+	cursor:pointer;
+	font-family:'微软雅黑','黑体';
+	font-size:130%;
+	font-weight:bolder;
+	color:#fff;
+}
+.login-btn:active{
+	background-position:0px -36px;
+}
+
+
+#box-1{
+	border-top:1px solid #e1e1e1;
+	background-color:#fdf9eb;
+}
+.cont-1-item .title{
+	height:30px;
+	line-height:30px;
+}
+.intr-cont{
+	min-height:135px;
+	height:135px;
+	margin-top:10px;
+	width:250px;
+}
+
+#box-2{
+	border-top:1px solid #e1e1e1;
+}
+#box-2 .box-left{
+	background-color:#f0fcc9;
+}
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+网站目录规范：
+dazatu/
+   -README
+   -settings.py
+   -urls.py
+   -APP1/
+   -APP2/
+   ...
+   -APPn/
+   +docs/
+       #This will hold the documentation for your project
+   +static/
+       #In production this will be the root of your MEDIA_URL
+       +styles/
+       +scripts/
+       +images/
+   +tests/
+       #Project level tests (Each app should also have tests)
+   +uploads/
+       +content imgs, etc
+   +templates/
+       #This area is used to override templates from your reusable apps
+       +flatpages/
+       +comments/
+       +example/
+       +app1/
+       +app2/
+       +appN/

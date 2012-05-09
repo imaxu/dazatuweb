@@ -1,0 +1,234 @@
+﻿
+
+/* structre */
+
+.left-box .row{
+	width:95%;
+	text-align:left;
+}
+.left-box .row:first-child{
+	height:100px;
+	line-height:100px;
+}
+
+.left-box #second-row{
+	width:100%;
+}
+
+.primary-box .left-box,
+.primary-box .right-box{
+	height:800px;
+}
+#second-row .regform{
+	width:100%;
+	height:400px;
+}
+
+#second-row  .ctrl-btn{
+	float:right;
+	width:130px;
+}
+/* right side*/
+#row-0{
+	height:auto;
+	width:100%;
+	text-indent:1em;
+}
+#row-0.subject,
+#row-0 .describe,
+#row-0 .control{
+	
+}
+#row-0 .subject{
+	height:50px;
+	line-height:50px;
+}
+#row-0 .describe{
+	height:50px;
+	min-height:50px;
+	
+}
+#row-0 .control{
+	width:90%;
+	margin:0 auto;
+}
+#row-0 .control #login-button{
+	float:right;
+}
+/* elements */
+.step-nav{
+	
+}
+.step-nav .step-item{
+	float:left;
+	width:200px;
+}
+.step-nav .step-item .text{
+	height:25px;
+	line-height:25px;
+	font-size:14px;
+	font-weight:bold;
+}
+.curr-step .text{
+	color:#27668b;
+}
+.not-curr-step .text{
+	color:#e4eff9;
+}
+.step-nav .step-item .symbol{
+	width:180px;
+	height:10px;
+}
+
+.curr-step .symbol{
+	background-color:#27668b;
+}
+.not-curr-step .symbol{
+	background-color:#e4eff9;
+}
+#grp-0 .symbol{
+	border-radius:10px 0px 0px 10px;
+	-webkit-border-radius:10px 0px 0px 10px;
+	-moz-border-radius:10px 0px 0px 10px;
+	-ms-border-radius:10px 0px 0px 10px;
+	-o-border-radius:10px 0px 0px 10px;
+}
+#grp-2 .symbol{
+	border-radius:0px 10px 10px 0px;
+	-webkit-border-radius:0px 10px 10px 0px;
+	-moz-border-radius:0px 10px 10px 0px;
+	-ms-border-radius:0px 10px 10px 0px;
+	-o-border-radius:0px 10px 10px 0px;
+}
+.form{
+	width:100%;
+	height:100%;
+	margin-top:50px;
+}
+.form .form-row{
+	vertical-align: middle;
+}
+.form .form-row .subject,
+.form .form-row .control,
+.form .form-row .hint-msg{
+	float:left;	
+
+}
+.form .form-row .subject{
+	width:100px;
+	height:65px;
+	line-height:65px;
+
+}
+.form .form-row .control{
+	vertical-align: middle;
+	float:left;
+	padding-top:10px;
+	
+}
+.form .form-row .control .it-m{
+	background-image:url('../../images/input-text-338x41.png');
+	background-repeat:no-repeat;
+	width:337px;
+	height:40px;
+	border:none;
+	text-indent:1em;
+	font-size:130%;
+	color:gray;
+}
+.form .form-row .control .it-s{
+	background-image:url('../../images/input-text-97x39.png');
+	background-repeat:no-repeat;
+	width:97px;
+	height:39px;
+	border:none;
+	text-indent:1em;
+	font-size:130%;
+	color:gray;
+}
+.form .form-row .assist-msg{
+	margin-top:5px;
+	color:#919191;
+}
+.form .form-row .hint-msg{
+	width:auto;
+	vertical-align:middle;
+	padding-top:10px;
+	text-indent:1em;
+}
+
+.context{
+	width:100%;
+	height:100%;
+	margin-top:50px;
+}
+.context .context-row{
+	height:25px;
+	line-height:25px;
+	width:75%;
+	margin:0 auto;
+	
+}
+.context .context-row .subject,
+.context .context-row .content{
+	float:left;
+}
+.context .context-row .subject{
+	text-align:right;
+	width:150px;
+}
+.context .context-row .content{
+	color:#0066cc;
+}
+#pass-stat{
+	margin-left:1em;
+}
+#pass-stat .stat{
+	text-indent:1.5em;
+	float:left;
+	width:46px;
+	height:17px;
+	background-image:url('../../images/password-strength-138x34.png');	
+	background-repeat:no-repeat;
+}
+#stat-weak[class*="off"]{
+	background-position:0px 0px;
+}
+#stat-weak[class*="on"]{
+	
+	background-position:0px -17px;
+}
+#stat-norm[class*="off"]{
+	background-position:-46px 0px;
+}
+#stat-norm[class*="on"]{
+	background-position:-46px -17px;
+}
+#stat-stro[class*="off"]{
+	background-position:-92px 0px;
+}
+#stat-stro[class*="on"]{
+	background-position:-92px -17px;
+}
+#appellation{
+	width:120;
+	min-width:120px;
+	height:35px;
+	line-height:35px;
+	font-size:130%;
+}
+#appe-selector-form{
+	display:none;
+	background-color:#fff;
+	width:150px;
+	border:1px solid gray;
+	box-shadow:2px 2px 10px #919191;
+}
+#login-proc .content{
+	text-align:center;
+}
+
+.button-gray1{
+	width:;
+}
+

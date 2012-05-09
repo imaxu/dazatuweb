@@ -1,0 +1,46 @@
+{% extends "base-lr.html" %}
+{% load static %}
+{% block page_title %}
+会员登录
+{% endblock %}
+{% block page_head_addtional %}
+<link href="{% get_static_prefix %}styles/user/login.css" rel="stylesheet" rev="stylesheet" type="text/css" />
+<script src="{% get_static_prefix %}scripts/user/login.js" type="text/javascript"></script>
+{% endblock %}
+
+{% block layout_left %}
+<!-- left layout content -->
+<div id="login" style="margin:0 auto;width:100%;margin-top:50px;">
+	<div id="row-0" style="height:80px;" class="clear row bold g color-blue-darker">登录到打杂兔</div>
+	<div id="row-1" style="width:70%;margin:0 auto;line-height:40px;text-align:left;">
+		<div id="errs" class="color-orange s"></div>
+		<form id="loginform">
+			<div>
+				<label class="row m color-brown">帐号：</label>
+				<input id="l_account" class="input-txt color-gray s" type="text" 
+				rules="{required:true,messages:{required:'您还没有输入帐号。'}}" />
+				<div class="ss color-gray">可以使用电子邮箱地址或手机号码进行登录。</div>
+			</div>
+			<div>
+				<label class="row m color-brown">密码：</label>
+				<input id="l_password" class="input-txt color-gray m" type="password" 
+				rules="{required:true,rangelength:[6,16],messages:{required:'您还没有输入密码。',rangelength:'请输入6-16位的密码。'}}" />
+				<div class="ss color-gray">忘记密码了？</div>
+			</div>
+			<div class="sep-line"></div>
+			<div style="line-height:25px;">
+				<div>还没有开通打杂兔会员？</div>
+				<img src="{% get_static_prefix %}images/symbol/dazatu1.jpg" width="14" height="22" />
+				<a href="/user/reg/" style="margin-left:2px;">现在注册会员</a>
+			</div>
+			<div style="padding-top:50px;">
+				<div id="loginbtn" class="button-red">登录</div>
+			</div>
+		</form>
+	</div>
+</div>
+{% endblock %}
+		
+{% block layout_right %}
+<!-- right layout content -->
+{% endblock %}

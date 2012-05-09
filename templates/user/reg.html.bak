@@ -1,0 +1,253 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN">
+	<head>
+	<!--<base href="/preview/" />-->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="Cache-Control" content="no-cachee,must-revalidate">	
+		<title>{{ PAGE_TITLE }} - 打杂兔，大家帮助大家的网站</title>
+		<!-- import css -->
+		<link href="{% get_static_prefix %}styles/common.css" rel="stylesheet" rev="stylesheet" type="text/css" />
+		<link href="{% get_static_prefix %}styles/head.css" rel="stylesheet" rev="stylesheet" type="text/css" />		
+		<link href="{% get_static_prefix %}styles/user/reg.css" rel="stylesheet" rev="stylesheet" type="text/css" />	
+		<link href="{% get_static_prefix %}styles/foot.css" rel="stylesheet" rev="stylesheet" type="text/css" />
+		<link href="{% get_static_prefix %}styles/theme/smoothness/jquery-ui-1.8.16.custom.css" rel="stylesheet" rev="stylesheet" type="text/css" />
+		<link href="{% get_static_prefix %}styles/ext/jquery.qtip.min.css" rel="stylesheet" rev="stylesheet" type="text/css" />		
+		<!-- import scripts -->
+		<script src="{% get_static_prefix %}scripts/libs/jquery-1.7.1.min.js" type="text/javascript"></script>
+		<script src="{% get_static_prefix %}scripts/libs/jquery.tools.min.js" type="text/javascript"></script>
+		<script src="{% get_static_prefix %}scripts/libs/jquery.bxSlider.min.js" type="text/javascript"></script>
+		<script src="{% get_static_prefix %}scripts/libs/jquery.validate.min.js" type="text/javascript"></script>
+		<script src="{% get_static_prefix %}scripts/libs/jquery.metadata.js" type="text/javascript"></script>	
+		<script src="{% get_static_prefix %}scripts/libs/jquery.pwdStrength.js" type="text/javascript"></script>
+		<script src="{% get_static_prefix %}scripts/libs/jquery.hotkeys.min.js" type="text/javascript"></script>	
+		<script src="{% get_static_prefix %}scripts/libs/jquery.qtip.min.js" type="text/javascript"></script>	
+		<script src="{% get_static_prefix %}scripts/libs/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
+		<script src="{% get_static_prefix %}scripts/libs/ff_innerText.js" type="text/javascript"></script>	
+		<script src="{% get_static_prefix %}scripts/head.js" type="text/javascript"></script>				
+		<script src="{% get_static_prefix %}scripts/user/reg.js" type="text/javascript"></script>	
+		<script src="{% get_static_prefix %}scripts/libs/xDialog.js" type="text/javascript"></script>
+	</head>
+	<body id="userreg">
+		<div id="box-top" class="bg-ffef87-to-fdde05-sh">
+			<div id="top-bar-cont">
+				<div id="site-logo">
+					<img src="#" width="136" height="60" title="打杂兔，大家帮助大家的网站" />
+				</div>
+				<div id="region-select">
+					<a id="city-selector" href="#" rel="#tipbox">选择城市▼</a>
+				</div>
+				<div id="top-bar-middle"></div>
+				<div id="top-bar-menu">
+					<a href="/user/login/" id="menu-0">登陆</a>
+					<a href="#" id="menu-1">申请打杂</a>
+					<a href="#" id="menu-2">了解网站</a>
+				</div>
+			</div>
+		</div>
+		<!--[if lte IE 6]>
+		<div >你正在使用的浏览器版本太低，将不能正常浏览及使用本站的所有功能。请升级 <a href="http://windows.microsoft.com/zh-CN/internet-explorer/downloads/ie">Internet Explorer</a> 或使用 <a href="http://www.google.com/chrome/">Google Chrome</a> 浏览器。</div>
+		<![endif]-->
+		<div id="primary-box">
+			<div id="left-box">
+				<div style="height:750px;">
+					<div id="first-row" class="clear row bold g color-blue-darker">申请新帐号</div>
+					<div id="second-row" class="clear row">
+						<div class="step-nav clear">
+							<div id="grp-0" class="step-item curr-step">
+								<div class="text">1. 基本信息</div>
+								<div class="symbol"></div>
+							</div>
+							<div id="grp-1" class="step-item not-curr-step">
+								<div class="text">2. 实名信息</div>
+								<div class="symbol"></div>									
+							</div>
+							<div id="grp-2" class="step-item not-curr-step">
+								<div class="text">3. 提交注册信息</div>
+								<div class="symbol"></div>									
+							</div>
+						</div>
+						<form id="user-reg-area"  class="clear">						
+							<div id="step-0" class="regform">
+								<div class="form">
+									<div class="form-row clear">
+										<label for="#u_email" class="subject s color-brown">电子邮件</label>
+										<div class="control">
+											<input id="u_email" type="text" class="it-m" value="{{ u_email }}" rules="{required:true,email:true,messages:{required:'请您输入正确的电子邮箱格式。',email:'请您输入正确的电子邮箱格式。'}}" />
+											<div id="u_email_tip" for="u_email"  class="assist-msg ss" data="电子邮件将作为您的登录帐号,如yourname@domain.com。"></div>
+										</div>
+										<div class="hint-msg"></div>
+									</div>
+									<div class="form-row clear">
+										<label for="#u_pwd" class="subject s color-brown">设置密码</label>
+										<div class="control">
+											<input id="u_pwd" type="password"  class="it-m" maxlength="16" rules="{required:true,rangelength: [6,16],messages:{required:'请您输入6-16位由数字、符号、大小写字母组成的密码。',rangelength:'请至少输入6位长度的密码。'}}"/>
+											<div id="u_pwd_tip" class="assist-msg ss" data="请您输入6-16位由数字、符号、大小写字母组成的密码。"></div>
+										</div>
+										<div class="hint-msg">
+											<div>密码强度：</div>
+											<div id="pass-stat">
+												<div id="stat-weak" class="stat off">弱</div>
+												<div id="stat-norm" class="stat off">中</div>
+												<div id="stat-stro" class="stat off">强</div>
+											</div>
+										</div>									
+									</div>
+									<div class="form-row clear">
+										<label for="#u_repwd" class="subject s color-brown">重复密码</label>
+										<div class="control">
+											<input id="u_repwd" type="password" class="it-m" rules="{required:true,equalTo:'#u_pwd',messages:{required:'请您再次输入密码。',equalTo:'两次密码输入不一致。'}}"/>
+											<div  id="u_repwd_tip" for="u_repwd" class="assist-msg ss" data="请您再输入一次设置的密码，确保一致。"></div>
+										</div>
+										<div class="hint-msg"></div>								
+									</div>
+								</div>
+							</div>
+							<div id="step-1" class="regform">
+								<div class="form">
+									<div class="form-row clear">
+										<label for="#u_fname" class="subject s color-brown">真实姓名</label>
+										<div class="control">
+											<input id="u_fname" type="text" class="it-s" maxlength="2" rules="{required:true,cn_name:true,messages:{required:'请输入您真实的姓氏，打杂兔们更喜欢真实的信息。'}}"/>
+											<input id="u_lname" type="text" class="it-s" maxlength="3" rules="{required:true,cn_name:true,messages:{required:'请输入您真实的名字，您的名字我们不会公开。'}}"/>
+											<div class="assist-msg ss">
+												<div id="u_fname_tip" data="请输入您真实的姓氏，打杂兔们更喜欢真实的信息。"></div>											
+												<div id="u_lname_tip" data="请输入您真实的名字，您的名字我们不会公开。"></div>
+											</div>
+										</div>
+										<div class="hint-msg"></div>
+									</div>
+									<div class="form-row clear">
+										<label for="#u_appellation" class="subject s color-brown">选择称谓</label>
+										<div class="control">
+											<div id="appellation">请选择一个称谓</div>
+											<div style="display:none"><input type="text" id="u_appellation" rules="{required:true,messages:{required:'请选择一个称谓。'}}" /></div>
+											<div class="assist-msg ss">
+											<img src="{% get_static_prefix %}images/em/attention.png" width="16" height="16" title="请您注意" />
+											在使用网站服务时，我们将公开使用您选择的称谓 <label id="u_selfname"></label><label id="u_selappe"></label> 向其他人介绍您。
+											</div>
+										</div>
+										<div id="u_appellation_tip" class="hint-msg" data="请您选择一个称谓，这样我们可以向别人介绍您。">
+										</div>									
+									</div>
+									<div class="form-row clear">
+										<label for="#u_idcard" class="subject s color-brown">二代身份证</label>
+										<div class="control">
+											<input id="u_idcard" type="text" class="it-m" maxlength="18" rules="{required:true,cn_idcard:true,messages:{required:'请输入真实有效的18位二代身份证号码。',cn_idcard:'请输入真实有效的18位二代身份证号码。'}}"  />
+											<div id="u_idcard_tip" class="assist-msg ss" data="请输入真实有效的18位二代身份证号码。"></div>
+										</div>
+										<div class="hint-msg"></div>								
+									</div>
+									<div class="form-row clear">
+										<label for="#u_mphone" class="subject s color-brown">移动电话</label>
+										<div class="control">
+											<input id="u_mphone" type="text" class="it-m" maxlength="11" rules="{required:true,cn_mobile:true,messages:{required:'请输入真实有效的手机号码，我们将依此进行身份验证。'}}"  />
+											<div id="u_mphone_tip" class="assist-msg ss" data="请输入真实有效的手机号码，我们将依此进行身份验证。"></div>
+										</div>
+										<div class="hint-msg"></div>								
+									</div>									
+								</div>							
+							</div>
+							<div id="step-2" class="regform">
+								<div class="context">
+									<div class="context-row l bold color-blue-lighter">
+										<img src="{% get_static_prefix %}images/em/attention.png" width="16" height="16" />
+										<label id="prevfname1"></label>
+										<label id="prevappe"></label> :
+									</div>
+									<div class="context-row ss bold color-orange indent">
+										请您再次核对以下信息，提交后将不能自由更改。
+									</div>
+									<div class="blank"></div>
+									<div class="blank"></div>
+									<div class="blank"></div>
+									<div class="blank"></div>
+									<div class="context-row indent s color-brown">
+										<div class="subject">电子邮箱：</div>
+										<div id="prevemail"  class="content"></div>
+									</div>
+									<div class="context-row indent s color-brown">
+										<div class="subject">真实姓名：</div>
+										<div class="content">
+											<label id="prevfname2" ></label>
+											<label id="prevlname" ></label>
+										</div>									
+									</div>
+									<div class="context-row indent s color-brown">
+										<div class="subject">身份证信息：</div>
+										<div id="previdcard" class="content">
+										</div>									
+									</div>
+									<div class="context-row indent s color-brown">
+										<div class="subject">移动电话：</div>
+										<div id="prevmphone" class="content"></div>									
+									</div>									
+								</div>							
+							</div>
+						</form>
+						<div id="go-prev" class="ctrl-btn">
+							<div id="go-prev-btn" class="button-green">上一步</div>
+						</div>
+						<div id="go-next" class="ctrl-btn">
+							<div id="go-next-btn" class="button-red">继 续</div>
+						</div>
+						<div id="go-to-reg" class="ctrl-btn">
+							<div id="submit-btn" rel="" class="button-red">确 定</div>
+						</div>
+					</div>
+					<div id="third-row" class="clear row">
+						<form style="display:none;" action="/user/reg/post/" method="post">{% csrf_token %}
+							<input type="text" id="post_fname" />
+							<input type="text" id="post_lname" />
+							<input type="text" id="post_appe" />
+							<input type="text" id="post_pwd" />
+							<input type="text" id="post_idcard" />
+							<input type="text" id="post_mphone" />
+						</form>
+					</div>
+				</div>
+			</div>
+			<div id="right-box">
+				<div id="first-row" class="clear">
+					<div class="subject ss color-blue-lighter bold">直接登陆</div>
+					<div class="describe color-brown">如果您已经拥有了打杂兔会员帐号，请从这里直接登陆网站。</div>
+					<div class="control">
+						<div id="login-button" class="button-gray1"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% include "footer.html" %}
+		<div id="tipbox" class="dialogbox">
+			<div class="first-label"></div>
+			<div class="second-label"></div>
+			<img class="clsbtn" src="{% get_static_prefix %}images/popWinClos.png" title="关闭"/>
+			<div class="content clear">
+				<div class="s color-blue bold">请选择您所在的城市或地区：</div>
+				<div id="region-list" class="region-list">
+					<li><a href="#" class="region">海淀区</a></li>
+					<li><a href="#" class="region">石景山区</a></li>
+					<li><a href="#" class="region">东城区</a></li>
+					<li><a href="#" class="region">西城区</a></li>
+					<li><a href="#" class="region">朝阳区</a></li>
+				</div>				
+			</div>
+		</div>
+		<div  id="appe-selector-form">
+			<ul>
+				<li><a href="#" >先生</a></li>
+				<li><a href="#"  >女士</a></li>
+			</ul>
+		</div>
+		<div id="login-proc" class="dialogbox">
+			<div class="first-label"></div>
+			<div class="second-label"></div>
+			<img class="clsbtn" src="{% get_static_prefix %}images/popWinClos.png" title="关闭"/>
+			<div id="regresult" class="content clear">
+				正在提交注册信息。。。			
+			</div>
+		</div>		
+	</body>
+</html>

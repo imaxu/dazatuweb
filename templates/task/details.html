@@ -1,0 +1,217 @@
+{% extends "base-lr.html" %}
+{% load static %}
+{% load users_extra %}
+{% load task_extra %}
+{{ TASK }}
+{% block page_title %}
+{{ TASK.title }}
+{% endblock %}
+{% block page_head_addtional %}
+<link href="{% get_static_prefix %}styles/task/details.css" rel="stylesheet" rev="stylesheet" type="text/css" />
+<script src="{% get_static_prefix %}scripts/task/details.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>
+{% endblock %}
+{% block layout_left %}
+<div id="details" class="primary">
+	<div class="item clear">
+		<div class="row">
+			<div class="col" style="line-height:60px;">
+				<div class="t bold color-blue-lighter">{{ TASK.title }}</div>
+				<div class="m color-brown">
+					{{ TASK.user.first_name }}{{ TASK.user.appellation }}于
+					<label class="color-gray"> {{ TASK.posttime|date:"Y-m-d H:i:s"|get_task_elapsed_times }} </label>发布
+				</div>
+			</div>
+			<div class="col" style="width:auto;text-align:left;">
+				<img 
+					class="img-radius"
+					src="{% get_media_prefix %}{{ TASK.user.id|get_user_headimage_from_user }}" 
+					width="102" height="102" title="{{ TASK.user.first_name }}" />
+			</div>
+		</div>
+	</div>
+	<div class="item clear">
+		<div id="task-describe" class="row">
+			<div class="title-bg">
+				<label class="logo" />
+				<span class="title-txt s bold color-blue-darker">任务内容</span>
+			</div>
+			<div class="describe color-brown ss">
+				<div class="bold">任务区域：</div>
+				<div class="content">{{ TASK.in_region }}</div>
+				<div class="subject bold">描述：</div>
+				<div class="content">{{ TASK.describe }}</div>
+				<div class="subject bold">截止时间：</div>
+				<div class="content">领取任务截止：{{ TASK.assigned_deadline|date:"Y/m/d H:i" }}</div>
+				<div>任务完成截止：{{ TASK.finished_deadline|date:"Y/m/d H:i" }}</div>
+				<div class="subject bold">其他要求：</div>
+				<div class="content">
+				特殊的完成方式：
+					{% if TASK.done_with_virtual %}
+						{{ TASK.done_with_virtual }}
+					{% else %}
+						无
+					{% endif %}
+				</div>
+				<div>
+				附加说明：
+					{% if TASK.need_vehicle %}
+						需自行提供{{ TASK.need_vehicle }}
+					{% else %}
+						无
+					{% endif %}	
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="item clear">
+		<div id="recommend-tasks" class="row">
+			<div class="title-bg">
+				<label class="logo" />
+				<span class="title-txt s bold color-blue-darker">推荐任务</span>
+			</div>
+			<div class="list">
+				{% for task in RECOMMEND_TASKS %}
+				<div class="item">
+					<div class="headimage col" style="width:50px;">
+						<img 
+							class="img-radius" 
+							src="{% get_media_prefix %}{{ task.user.id|get_user_headimage_from_user  }}" 
+							title="{{ task.user.first_name }}{{ task.user.appellation }}" />
+					</div>
+					<div class="content col" style="width:auto;">
+						<div class="ss color-blue-lighter bold">
+							<a href="/task/details/{{ task.id }}">{{ task.title }}</a>
+						</div>
+						<div class="less-normal color-brown">{{ task.describe }}</div>
+						<div class="less-normal color-gray">
+						<label class="color-orange">{{ task.task_type.name}}&nbsp;</label>类型的任务</div>
+					</div>
+					<div class="options col" style="width:auto;">
+						<div class="button-gray2" style="text-align:center;">复制任务</div>
+					</div>
+				</div>						
+				{% endfor %}
+			</div>
+		</div>
+	</div>	
+	<div class="item clear">
+		<div id="comments" class="row">
+			<div class="title-bg">
+				<label class="logo" />
+				<span class="title-txt s bold color-blue-darker">与雇主交谈</span>
+			</div>
+			<div class="describe">该功能尚未开放。</div>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}
+
+{% block layout_right %}
+{% if IS_LOGINED %}
+	<div class="item">
+		<div class="button-green-big">
+			<img src="{% get_static_prefix %}images/txt-copy-task.png" style="margin-top:12px;"/>
+		</div>
+		<div class="blank"></div>
+		<div class="blank"></div>
+		<div class="side-sep-line"></div>
+	</div>
+	<div class="item">
+		<div class="title color-blue-lighter s bold">赏金评估</div>
+		<div class="describe t bold color-orange">￥ 35-45</div>
+		<div class="describe color-gray s">
+		赏金评估是系统依据以往相似任务成
+		交价格估算出的建议范围，仅供打杂
+		兔们竞拍参考。		
+		</div>
+		<div class="side-sep-line"></div>
+	</div>
+	<div class="item">
+		<div class="title color-blue-lighter s bold">任务状态</div>
+		<div class="describe color-gray-darker ss_in">
+			<div id="task-status">
+				<div class="status radius_5_5_5_5">
+					<div class="subject ss color-brown">发布时间</div>
+					<div class="content s qtipitem" title="{{ TASK.posttime|date:'m/d H:m' }}">
+					{{ TASK.posttime|date:"m/d H:m" }}
+					</div>
+					<div class="symbol">
+						<img src="{% get_static_prefix %}images/status-posted.png" width="17" height="24" />
+					</div>
+				</div>			
+				<div class="status radius_5_5_5_5">
+					<div class="subject ss color-brown">任务分配</div>
+					<div class="content">
+					
+					</div>
+					<div class="symbol">
+						<img src="{% get_static_prefix %}images/status-assigned.png" width="30" height="19" />
+					</div>						
+				</div>
+				<div class="status radius_5_5_5_5">
+					<div class="subject ss color-brown">完成时间</div>
+					<div class="content">
+					
+					</div>
+					<div class="symbol">
+						<img src="{% get_static_prefix %}images/status-clock.png" width="30" height="21" />
+					</div>					
+				</div>
+				<div class="status radius_5_5_5_5">
+					<div class="subject ss color-brown">雇主评价</div>
+					<div class="content"></div>
+					<div class="symbol">
+						<img src="{% get_static_prefix %}images/status-complete.png" width="29" height="25" />
+					</div>					
+				</div>				
+			</div>
+		</div>
+		<div class="side-sep-line"></div>
+	</div>
+	<div class="item">
+		<div class="title color-blue-lighter s bold">
+			地理位置标识
+			<label>
+				&nbsp;
+				<img 
+					class="qtipitem" 
+					src="{% get_static_prefix %}images/em/mark1.gif" 
+					title="地理位置标识为您标识出当前任务所处的大致区域。"
+				/>
+			</label>
+		</div>
+		<div  id="taskmap" class="describe color-gray s">
+				
+		</div>
+		<div class="side-sep-line"></div>
+	</div>	
+<script type="text/javascript">
+var map = new BMap.Map("taskmap");
+var def_point = new BMap.Point(116.404, 39.915);
+// 创建地址解析器实例
+var myGeo = new BMap.Geocoder();
+// 将地址解析结果显示在地图上,并调整地图视野
+myGeo.getPoint("{{ TASK|get_singel_location_to_mapsearch }}", function(point){
+  if (point) {
+		def_point = point;
+  }
+	map.centerAndZoom(def_point, 15);	  
+	var circle = new BMap.Circle(
+		def_point,
+		500,
+		{
+			strokeWeight:1,
+			strokeColor:'#000',
+			fillColor:'#000',
+			fillOpacity:0.55
+		});		
+	map.addOverlay(circle); 
+}, "{{ TASK.in_region }}");
+
+
+</script>	
+{% endif %}
+{% endblock %}
