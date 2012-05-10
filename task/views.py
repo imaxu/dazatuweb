@@ -99,6 +99,7 @@ def task_post(request,get_header=None):
             }
         )        
 def task_post_review(request,get_header=None):
+    
     task = Task()
     task.title = request.POST['task_title']
     task.describe = request.POST['task_describe']
@@ -107,6 +108,9 @@ def task_post_review(request,get_header=None):
     task.helper_payment = request.POST['task_helper_payment']
     task.task_type = Task_Type.objects.get(id=request.POST['task_type'])
     task.private_describe = request.POST['task_private_describe']
+    task.done_with_virtual = request.POST['done_with_virtual']
+    task.need_vehicle = request.POST['need_vehicle']
+
     return wrapped_render_to_response(
         'task/post_review.html',
         {

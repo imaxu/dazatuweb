@@ -18,6 +18,13 @@ $(document).ready(function(){
 	});
 
 	$(".go-to-next").click(function(){
+
+		var $needVehicle = $("#need_vehicle")[0].checked;
+		var $doneWithVirtual = $("#done_with_virtual")[0].checked;
+
+		$("input[name='need_vehicle']").val($needVehicle);
+		$("input[name='done_with_virtual']").val($doneWithVirtual);
+
 		$("#go-to-next").click();
 	});
 	

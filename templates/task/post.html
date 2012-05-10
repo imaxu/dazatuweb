@@ -19,8 +19,8 @@
 	<input type="text" value="{{ IS_POSTBACK }}" id="is_postback" style="display:none;"/>
 	<input type="hidden" name="assigned_deadline" value="" />
 	<input type="hidden" name="finished_deadline" value="" />
-	<input type="hidden" name="id_by_vehicle" value="" />
-	<input type="hidden" name="id_by_virtual" value="" />
+	<input type="hidden" name="need_vehicle" value="false" />
+	<input type="hidden" name="done_with_virtual" value="false" />
 	<input type="hidden" value="{{ REQUEST.task_repeat_freq }}" name="task-repeat-frequency"/>
 	<input type="hidden" value="{{ REQUEST.task_assign_model }}" name="task-assign-model"/>
 	<input type="submit" id="go-to-next" style="display:none;" />
@@ -294,12 +294,12 @@
 		<div class=" border-bottom-line "></div>
 		<div>
 			<label class="ss color-brown">
-				<input id="is_by_virtual" type="checkbox" />可用在线或其他虚拟方式完成。
+				<input id="done_with_virtual" type="checkbox" />可用在线或其他虚拟方式完成。
 			</label>			
 		</div>
 		<div>
 			<label class="ss color-brown">
-				<input id="id_by_vehicle" type="checkbox" />需要自备运输工具。
+				<input id="need_vehicle" type="checkbox"  />需要自备运输工具。
 			</label>		
 		</div>
 		<div class=" border-bottom-line "></div>

@@ -54,10 +54,18 @@
         </div>
         <div class="blank clear"></div>
         <div class=" describe row s_in">
-            {{ TASK.describe }}{{ TASK.done_with_virtual }}
-            {% ifnotequal TASK.done_with_virtual "None" %}
+			{{ TASK.describe }}          
+			{% ifnotequal TASK.done_with_virtual "false" %}
+
             <div>
                 附加条件1：可以通过电话或其他虚拟方式完成。
+            </div>
+			{% endifnotequal %}
+			
+			{% ifnotequal TASK.need_vehicle "false" %}
+
+            <div>
+                附加条件：需自备交通或运输工具。
             </div>
             {% endifnotequal %}
         </div>
